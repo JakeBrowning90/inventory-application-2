@@ -3,8 +3,8 @@ require("dotenv").config;
 const express = require("express");
 //Routers
 const indexRouter = require("./routes/index");
-// const categoryRouter = require("./routes/category");
-// const itemRouter = require("./routes/item");
+const artistRouter = require("./routes/artist");
+const albumRouter = require("./routes/album");
 
 const app = express();
 const path = require("node:path");
@@ -18,8 +18,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
-// app.use("/", categoryRouter);
-// app.use("/", itemRouter);
+app.use("/artists", artistRouter);
+app.use("/albums", albumRouter);
 
 const PORT = 3000;
 
