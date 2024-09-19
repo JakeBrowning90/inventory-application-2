@@ -3,7 +3,7 @@ const router = express.Router();
 
 // GET all albums
 router.get("/", function (req, res) {
-  res.render("index");
+  res.render("listView");
 });
 
 // GET single album detail

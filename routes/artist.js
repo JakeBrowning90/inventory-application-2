@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const artistController = require("../controllers/artistController");
+
 // GET all artists
-router.get("/", function (req, res) {
-  res.render("index");
-});
+router.get("/", artistController.getArtists);
 
 // GET single artist detail
 // router.get("/", function (req, res) {
