@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const albumController = require("../controllers/albumController");
+
 // GET all albums
-router.get("/", function (req, res) {
-  res.render("listView");
-});
+router.get("/", albumController.getAlbums);
 
 // GET single album detail
 // router.get("/", function (req, res) {
