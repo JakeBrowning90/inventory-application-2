@@ -7,13 +7,21 @@
   </head>
   <body>
     <h1><%= title %> Search</h1>
+    <a href="/">Home</a>
     <p>To-do: Add <%= title %> link</p>
     <p>To-do: Search <%= title %> form</p>
     <p>To-do: Render <%= title %> list</p>
     <ul>
       <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
       <li>
-        <p><%= artist.name %></p>
+        <a href="artists/<%= artist.id %>/detail">
+        <p><%= artist.id %> | <%= artist.name %></p>
+      </a>
+      </li>
+      <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) => {
+      %>
+      <li>
+        <p><%= album.id %> | <%= album.title %></p>
       </li>
       <% }) %> <% } %>
     </ul>

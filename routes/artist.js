@@ -7,9 +7,7 @@ const artistController = require("../controllers/artistController");
 router.get("/", artistController.getArtists);
 
 // GET single artist detail
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/detail", artistController.getArtistDetail);
 
 // GET new artist form
 // router.get("/", function (req, res) {
