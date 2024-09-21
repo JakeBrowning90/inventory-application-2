@@ -6,7 +6,9 @@ async function getAllArtists() {
 }
 
 async function getArtistByID(id) {
-  const rows = await pool.query("SELECT * FROM artists WHERE id = ($1)", [id]);
+  const { rows } = await pool.query("SELECT * FROM artists WHERE id = ($1)", [
+    id,
+  ]);
   return rows[0];
 }
 
@@ -15,8 +17,16 @@ async function getAllAlbums() {
   return rows;
 }
 
+async function getAlbumByID(id) {
+  const { rows } = await pool.query("SELECT * FROM albums WHERE id = ($1)", [
+    id,
+  ]);
+  return rows[0];
+}
+
 module.exports = {
   getAllArtists,
   getArtistByID,
   getAllAlbums,
+  getAlbumByID
 };

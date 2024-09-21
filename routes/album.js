@@ -7,9 +7,7 @@ const albumController = require("../controllers/albumController");
 router.get("/", albumController.getAlbums);
 
 // GET single album detail
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/detail", albumController.getAlbumDetail);
 
 // GET new album form
 // router.get("/", function (req, res) {
