@@ -9,8 +9,14 @@
     <h1><%= title %> Search</h1>
     <a href="/">Home</a>
     <p>To-do: Add <%= title %> link</p>
+    <% if (locals.artists) { %>
+    <a href="/artists/new">Add New Artist / Group</a>
+    <% } %> <% if (locals.albums) { %>
+    <a href="/albums/new">Add New Album</a>
+    <% } %>
+
     <p>To-do: Search <%= title %> form</p>
-    <p>To-do: Render <%= title %> list</p>
+    <p>Done: Render <%= title %> list</p>
     <ul>
       <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
       <li>
@@ -18,8 +24,8 @@
           <p><%= artist.id %> | <%= artist.name %></p>
         </a>
       </li>
-      <% }) %> <% } %> 
-      <% if (locals.albums) { %> <% albums.forEach((album) => { %>   
+      <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) => {
+      %>
       <li>
         <a href="albums/<%= album.id %>/detail">
           <p><%= album.id %> | <%= album.title %></p>

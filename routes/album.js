@@ -9,15 +9,11 @@ router.get("/", albumController.getAlbums);
 // GET single album detail
 router.get("/:id/detail", albumController.getAlbumDetail);
 
-// GET new album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+// GET new artist form
+router.get("/new", albumController.getAlbumForm);
 
-// POST new album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+// POST new artist form
+router.post("/new", albumController.postAlbumForm);
 
 // GET UPDATE album form
 // router.get("/", function (req, res) {

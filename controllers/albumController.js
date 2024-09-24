@@ -11,3 +11,16 @@ exports.getAlbumDetail = asyncHandler(async (req, res) => {
   const album = await db.getAlbumByID(req.params.id);
   res.render("itemDetail", { title: "Album Detail", album: album });
 });
+
+exports.getAlbumForm = asyncHandler(async (req, res) => {
+  res.render("albumForm", { title: "New Album" });
+});
+
+exports.postAlbumForm = [
+  asyncHandler(async (req, res) => {
+    const album = req.body;
+    console.log(album)
+    await db.insertAlbum(album);
+    res.redirect("/albums");
+  }),
+];

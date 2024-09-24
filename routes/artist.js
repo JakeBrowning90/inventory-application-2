@@ -10,14 +10,10 @@ router.get("/", artistController.getArtists);
 router.get("/:id/detail", artistController.getArtistDetail);
 
 // GET new artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/new", artistController.getArtistForm);
 
 // POST new artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.post("/new", artistController.postArtistForm);
 
 // GET UPDATE artist form
 // router.get("/", function (req, res) {
