@@ -12,8 +12,23 @@
     <p><%= artist.name %></p>
     <p><%= artist.activeyear %></p>
     <p><%= artist.notes %></p>
+    <p>Albums:</p>
+    <ul>
+      <% if (locals.albumList) { %> <% albumList.forEach((album) => {%>
+
+      <li><a href="/albums/<%= album.id %>/detail"><%= album.title %></a></li>
+      <% }) %> <% } %>
+    </ul>
+
     <% } %> <% if (locals.album) { %>
     <p><%= album.title %></p>
+    <p>Artist(s):</p>
+    <ul>
+      <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
+
+      <li><a href="/artists/<%= artist.id %>/detail"><%= artist.name %></a></li>
+      <% }) %> <% } %>
+    </ul>
     <p><%= album.year %></p>
     <p><%= album.notes %></p>
     <% } %>

@@ -8,8 +8,15 @@ exports.getAlbums = asyncHandler(async (req, res) => {
 });
 
 exports.getAlbumDetail = asyncHandler(async (req, res) => {
+  // Get album
   const album = await db.getAlbumByID(req.params.id);
-  res.render("itemDetail", { title: "Album Detail", album: album });
+  // Get artists for album
+  const artistList = await db.getArtistsByAlbum(req.params.id);
+  res.render("itemDetail", {
+    title: "Album Detail",
+    album: album,
+    artistList: artistList,
+  });
 });
 
 exports.getAlbumForm = asyncHandler(async (req, res) => {
@@ -19,7 +26,7 @@ exports.getAlbumForm = asyncHandler(async (req, res) => {
 exports.postAlbumForm = [
   asyncHandler(async (req, res) => {
     const album = req.body;
-    console.log(album)
+    console.log(album);
     await db.insertAlbum(album);
     res.redirect("/albums");
   }),

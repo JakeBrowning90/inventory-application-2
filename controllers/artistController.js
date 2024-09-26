@@ -8,8 +8,15 @@ exports.getArtists = asyncHandler(async (req, res) => {
 });
 
 exports.getArtistDetail = asyncHandler(async (req, res) => {
+  // Get artist
   const artist = await db.getArtistByID(req.params.id);
-  res.render("itemDetail", { title: "Artist Detail", artist: artist });
+  // Get albums by artist
+  const albumList = await db.getAlbumsByArtist(req.params.id);
+  res.render("itemDetail", {
+    title: "Artist Detail",
+    artist: artist,
+    albumList: albumList,
+  });
 });
 
 exports.getArtistForm = asyncHandler(async (req, res) => {

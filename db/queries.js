@@ -31,6 +31,23 @@ async function getAlbumByID(id) {
   return rows[0];
 }
 
+async function getAlbumsByArtist(artist_id) {
+  const { rows } = await pool.query(
+    "SELECT albums.id, albums.title FROM albums INNER JOIN album_credits ON albums.id = album_credits.album_id INNER JOIN artists ON artists.id = album_credits.artist_id WHERE artists.id = ($1)",
+    [artist_id]
+  );
+  // console.log(rows);
+  return rows;
+}
+
+async function getArtistsByAlbum(album_id) {
+  const { rows } = await pool.query(
+    "SELECT artists.id, artists.name FROM albums INNER JOIN album_credits ON albums.id = album_credits.album_id INNER JOIN artists ON artists.id = album_credits.artist_id WHERE albums.id = ($1)",
+    [album_id]
+  );
+  return rows;
+}
+
 async function insertAlbum(album) {
   await pool.query(
     "INSERT INTO albums (title, year, notes) VALUES ($1, $2, $3)",
@@ -44,5 +61,7 @@ module.exports = {
   insertArtist,
   getAllAlbums,
   getAlbumByID,
-  insertAlbum
+  getAlbumsByArtist,
+  getArtistsByAlbum,
+  insertAlbum,
 };
