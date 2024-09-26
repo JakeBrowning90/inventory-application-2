@@ -56,10 +56,19 @@ async function insertAlbum(album) {
   // Get album's id
   // console.log(rows);
   // Insert albumid and artistid(s) into credits table
-  await pool.query(
-    "INSERT INTO album_credits (album_id, artist_id) VALUES ($1, $2)",
-    [rows[0].id, album.artist]
-  );
+  if (Array.isArray(album.artist)) {
+    album.artist.forEach((artist) => {
+      pool.query(
+        "INSERT INTO album_credits (album_id, artist_id) VALUES ($1, $2)",
+        [rows[0].id, artist]
+      );
+    });
+  } else {
+    await pool.query(
+      "INSERT INTO album_credits (album_id, artist_id) VALUES ($1, $2)",
+      [rows[0].id, album.artist]
+    );
+  }
 }
 
 module.exports = {
