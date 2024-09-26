@@ -20,13 +20,14 @@ exports.getAlbumDetail = asyncHandler(async (req, res) => {
 });
 
 exports.getAlbumForm = asyncHandler(async (req, res) => {
-  res.render("albumForm", { title: "New Album" });
+  const artists = await db.getAllArtists();
+  res.render("albumForm", { title: "New Album", artists: artists });
 });
 
 exports.postAlbumForm = [
   asyncHandler(async (req, res) => {
     const album = req.body;
-    console.log(album);
+    // console.log(album);
     await db.insertAlbum(album);
     res.redirect("/albums");
   }),

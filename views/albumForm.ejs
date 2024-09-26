@@ -11,11 +11,17 @@
       <p>TBA: Errors partial, replace required tag</p>
       <form method="POST">
         <label for="title">Album title:</label>
-        <input type="text" name="title" required/>
+        <input type="text" name="title" required />
+        <label for="artist">Artist(s):</label>
+        <select name="artist" multiple required>
+          <% artists.forEach((artist) => { %>
+          <option value="<%= artist.id %>"><%=artist.name%></option>
+          <%})%>
+        </select>
         <label for="year">Release year:</label>
-        <input type="number" name="year" required/>
+        <input type="number" name="year" required />
         <label for="notes">Notes:</label>
-        <input type="text" name="notes" required/>
+        <input type="text" name="notes" required />
         <button>Submit</button>
       </form>
     </main>
