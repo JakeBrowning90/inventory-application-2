@@ -22,13 +22,9 @@ router.get("/:id/update", artistController.getArtistUpdate);
 router.post("/:id/update", artistController.postArtistUpdate);
 
 // GET DELETE artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/delete", artistController.getArtistDelete);
 
 // POST DELETE artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.post("/:id/delete", artistController.postArtistDelete);
 
 module.exports = router;

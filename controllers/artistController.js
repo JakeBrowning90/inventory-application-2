@@ -43,3 +43,22 @@ exports.postArtistUpdate = [
     res.redirect(`/artists/${req.params.id}/detail`);
   }),
 ];
+
+exports.getArtistDelete = asyncHandler(async (req, res) => {
+    // Get artist
+    const artist = await db.getArtistByID(req.params.id);
+    // Get albums by artist
+    const albumList = await db.getAlbumsByArtist(req.params.id);
+    res.render("artistDelete", {
+      title: "Delete Artist",
+      artist: artist,
+      albumList: albumList,
+    });
+});
+
+exports.postArtistDelete = [
+  asyncHandler(async (req, res) => {
+    await db.deleteArtist(req.params.id);
+    res.redirect('/artists');
+  }),
+];

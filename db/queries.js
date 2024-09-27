@@ -21,10 +21,18 @@ async function insertArtist(artist) {
 }
 
 async function updateArtist(id, artist) {
-  console.log(artist)
+  console.log(artist);
   await pool.query(
     "UPDATE artists SET name = ($1), activeyear = ($2), notes = ($3) WHERE id = ($4)",
     [artist.name, artist.activeyear, artist.notes, id]
+  );
+}
+
+async function deleteArtist(id) {
+  // Delete artist from artist table
+  await pool.query(
+    "DELETE FROM artists WHERE id = ($1)",
+    [id]
   );
 }
 
@@ -79,10 +87,41 @@ async function insertAlbum(album) {
 }
 
 async function updateAlbum(id, album) {
-  console.log(album)
   await pool.query(
     "UPDATE albums SET title = ($1), year = ($2), notes = ($3) WHERE id = ($4)",
     [album.title, album.year, album.notes, id]
+  );
+  // Clear existing credits from credits table
+  await pool.query(
+    "DELETE FROM album_credits WHERE album_id = ($1)",
+    [id]
+  );
+  // Insert albumid and artistid(s) into credits table
+  if (Array.isArray(album.artist)) {
+    album.artist.forEach((artist) => {
+      pool.query(
+        "INSERT INTO album_credits (album_id, artist_id) VALUES ($1, $2)",
+        [id, artist]
+      );
+    });
+  } else {
+    await pool.query(
+      "INSERT INTO album_credits (album_id, artist_id) VALUES ($1, $2)",
+      [id, album.artist]
+    );
+  }
+}
+
+async function deleteAlbum(id) {
+  // Delete album from album_credits table
+  await pool.query(
+    "DELETE FROM album_credits WHERE album_id = ($1)",
+    [id]
+  );
+  // Delete album from album table
+  await pool.query(
+    "DELETE FROM albums WHERE id = ($1)",
+    [id]
   );
 }
 
@@ -91,10 +130,12 @@ module.exports = {
   getArtistByID,
   insertArtist,
   updateArtist,
+  deleteArtist,
   getAllAlbums,
   getAlbumByID,
   getAlbumsByArtist,
   getArtistsByAlbum,
   insertAlbum,
-  updateAlbum
+  updateAlbum,
+  deleteAlbum,
 };

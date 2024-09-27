@@ -22,13 +22,9 @@ router.get("/:id/update", albumController.getAlbumUpdate);
 router.post("/:id/update", albumController.postAlbumUpdate);
 
 // GET DELETE album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/delete", albumController.getAlbumDelete);
 
 // POST DELETE album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.post("/:id/delete", albumController.postAlbumDelete);
 
 module.exports = router;
