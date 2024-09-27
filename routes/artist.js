@@ -16,14 +16,10 @@ router.get("/new", artistController.getArtistForm);
 router.post("/new", artistController.postArtistForm);
 
 // GET UPDATE artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/update", artistController.getArtistUpdate);
 
 // POST UPDATE artist form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.post("/:id/update", artistController.postArtistUpdate);
 
 // GET DELETE artist form
 // router.get("/", function (req, res) {

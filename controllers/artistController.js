@@ -30,3 +30,17 @@ exports.postArtistForm = [
     res.redirect("/artists");
   }),
 ];
+
+exports.getArtistUpdate = asyncHandler(async (req, res) => {
+  const artist = await db.getArtistByID(req.params.id);
+  // console.log(artist);
+  res.render("artistForm", { title: "Update Artist / Group", artist: artist });
+});
+
+exports.postArtistUpdate = [
+  asyncHandler(async (req, res) => {
+    const artist = req.body;
+    await db.updateArtist(req.params.id, artist);
+    res.redirect(`/artists/${req.params.id}/detail`);
+  }),
+];

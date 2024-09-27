@@ -10,7 +10,7 @@
     <a href="/">Home</a>
     <% if (locals.artist) { %>
     <p><%= artist.name %></p>
-    <p><%= artist.activeyear %></p>
+    <p>First active: <%= artist.activeyear %></p>
     <p><%= artist.notes %></p>
     <p>Albums:</p>
     <ul>
@@ -19,6 +19,8 @@
       <li><a href="/albums/<%= album.id %>/detail"><%= album.title %></a></li>
       <% }) %> <% } %>
     </ul>
+    <a href="/artists/<%= artist.id %>/update">Update Artist</a>
+    <a href="/artists/<%= artist.id %>/delete">Delete Artist</a>
 
     <% } %> <% if (locals.album) { %>
     <p><%= album.title %></p>
@@ -31,6 +33,8 @@
     </ul>
     <p><%= album.year %></p>
     <p><%= album.notes %></p>
+    <a href="">Update Album</a>
+    <a href="">Delete Album</a>
     <% } %>
   </body>
 </html>

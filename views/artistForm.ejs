@@ -7,17 +7,18 @@
   </head>
   <body>
     <main>
+      <h1><%= title %></h1>
       <a href="/">Home</a>
       <p>TBA: Errors partial, replace required tag</p>
       <form method="POST">
         <label for="name">Artist/Group name:</label>
-        <input type="text" name="name" required/>
-        <label for="year">First year active:</label>
-        <input type="number" name="year" required/>
+        <input type="text" name="name" value="<%= (locals.artist) ? artist.name : '' %>" required/>
+        <label for="activeyear">First year active:</label>
+        <input type="number" name="activeyear" value="<%= (locals.artist) ? artist.activeyear : '' %>" required/>
         <label for="notes">Notes:</label>
-        <input type="text" name="notes" required/>
+        <input type="text" name="notes" value="<%= (locals.artist) ? artist.notes : '' %>" required/>
         <button>Submit</button>
       </form>
     </main>
   </body>
-</html>
+</html

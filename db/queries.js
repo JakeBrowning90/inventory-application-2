@@ -13,9 +13,18 @@ async function getArtistByID(id) {
 }
 
 async function insertArtist(artist) {
+  // console.log(artist)
   await pool.query(
     "INSERT INTO artists (name, activeyear, notes) VALUES ($1, $2, $3)",
     [artist.name, artist.activeyear, artist.notes]
+  );
+}
+
+async function updateArtist(id, artist) {
+  console.log(artist)
+  await pool.query(
+    "UPDATE artists SET name = ($1), activeyear = ($2), notes = ($3) WHERE id = ($4)",
+    [artist.name, artist.activeyear, artist.notes, id]
   );
 }
 
@@ -75,6 +84,7 @@ module.exports = {
   getAllArtists,
   getArtistByID,
   insertArtist,
+  updateArtist,
   getAllAlbums,
   getAlbumByID,
   getAlbumsByArtist,
