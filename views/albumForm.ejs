@@ -11,7 +11,7 @@
       <p>TBA: Errors partial, replace required tag</p>
       <form method="POST">
         <label for="title">Album title:</label>
-        <input type="text" name="title" required />
+        <input type="text" name="title" value="<%= (locals.album) ? album.title : '' %>" required />
         <label for="artist">Artist(s):</label>
         <select name="artist" multiple required>
           <% artists.forEach((artist) => { %>
@@ -19,9 +19,9 @@
           <%})%>
         </select>
         <label for="year">Release year:</label>
-        <input type="number" name="year" required />
+        <input type="number" name="year" value="<%= (locals.album) ? album.year : '' %>" required />
         <label for="notes">Notes:</label>
-        <input type="text" name="notes" required />
+        <input type="text" name="notes" value="<%= (locals.album) ? album.notes : '' %>" required />
         <button>Submit</button>
       </form>
     </main>

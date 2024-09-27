@@ -31,10 +31,10 @@
       <li><a href="/artists/<%= artist.id %>/detail"><%= artist.name %></a></li>
       <% }) %> <% } %>
     </ul>
-    <p><%= album.year %></p>
+    <p>Release year: <%= album.year %></p>
     <p><%= album.notes %></p>
-    <a href="">Update Album</a>
-    <a href="">Delete Album</a>
+    <a href="/albums/<%= album.id %>/update">Update Album</a>
+    <a href="/albums/<%= album.id %>/delete">Delete Album</a>
     <% } %>
   </body>
 </html>

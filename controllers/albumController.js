@@ -32,3 +32,21 @@ exports.postAlbumForm = [
     res.redirect("/albums");
   }),
 ];
+
+exports.getAlbumUpdate = asyncHandler(async (req, res) => {
+  const album = await db.getAlbumByID(req.params.id);
+  const artists = await db.getAllArtists();
+  res.render("albumForm", {
+    title: "Update Album",
+    album: album,
+    artists: artists,
+  });
+});
+
+exports.postAlbumUpdate = [
+  asyncHandler(async (req, res) => {
+    const album = req.body;
+    await db.updateAlbum(req.params.id, album);
+    res.redirect(`/albums/${req.params.id}/detail`);
+  }),
+];

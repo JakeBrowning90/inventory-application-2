@@ -33,7 +33,6 @@ exports.postArtistForm = [
 
 exports.getArtistUpdate = asyncHandler(async (req, res) => {
   const artist = await db.getArtistByID(req.params.id);
-  // console.log(artist);
   res.render("artistForm", { title: "Update Artist / Group", artist: artist });
 });
 

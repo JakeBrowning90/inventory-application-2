@@ -57,13 +57,11 @@ async function getArtistsByAlbum(album_id) {
 }
 
 async function insertAlbum(album) {
-  // Insert album into table
+  // Insert album into table, get new ID
   const { rows } = await pool.query(
     "INSERT INTO albums (title, year, notes) VALUES ($1, $2, $3) RETURNING id",
     [album.title, album.year, album.notes]
   );
-  // Get album's id
-  // console.log(rows);
   // Insert albumid and artistid(s) into credits table
   if (Array.isArray(album.artist)) {
     album.artist.forEach((artist) => {
@@ -80,6 +78,14 @@ async function insertAlbum(album) {
   }
 }
 
+async function updateAlbum(id, album) {
+  console.log(album)
+  await pool.query(
+    "UPDATE albums SET title = ($1), year = ($2), notes = ($3) WHERE id = ($4)",
+    [album.title, album.year, album.notes, id]
+  );
+}
+
 module.exports = {
   getAllArtists,
   getArtistByID,
@@ -90,4 +96,5 @@ module.exports = {
   getAlbumsByArtist,
   getArtistsByAlbum,
   insertAlbum,
+  updateAlbum
 };

@@ -16,14 +16,10 @@ router.get("/new", albumController.getAlbumForm);
 router.post("/new", albumController.postAlbumForm);
 
 // GET UPDATE album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.get("/:id/update", albumController.getAlbumUpdate);
 
 // POST UPDATE album form
-// router.get("/", function (req, res) {
-//   res.render("index");
-// });
+router.post("/:id/update", albumController.postAlbumUpdate);
 
 // GET DELETE album form
 // router.get("/", function (req, res) {
