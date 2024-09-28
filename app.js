@@ -21,6 +21,10 @@ app.use("/", indexRouter);
 app.use("/artists", artistRouter);
 app.use("/albums", albumRouter);
 
+app.get("*", function (req, res) {
+  res.render("404", { title: "Error 404" });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
