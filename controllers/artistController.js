@@ -19,7 +19,7 @@ const validateForm = [
 
 exports.getArtists = asyncHandler(async (req, res) => {
   const artists = await db.getAllArtists();
-  res.render("listView", { title: "Artist Search", artists: artists });
+  res.render("artistList", { title: "Artist Search", artists: artists });
 });
 
 exports.getArtistDetail = asyncHandler(async (req, res) => {

@@ -5,13 +5,17 @@
     <%- include('partials/header')%>
     <main>
       <h1><%= title %></h1>
-      <% if (locals.artists) { %>
+
       <a href="/artists/new">Add New Artist / Group</a>
-      <% } %> <% if (locals.albums) { %>
-      <a href="/albums/new">Add New Album</a>
-      <% } %>
 
       <p>To-do: Search <%= title %> form</p>
+
+      <form method="GET" action="">
+        <label for="">Search:</label>
+        <input type="text" name="searchValue" id="searchValue" />
+        <button type="submit">Search</button>
+      </form>
+
       <ul>
         <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
         <li>
@@ -19,14 +23,9 @@
             <p><%= artist.name %></p>
           </a>
         </li>
-        <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) =>
-        { %>
-        <li>
-          <a href="albums/<%= album.id %>/detail">
-            <p><%= album.title %></p>
-          </a>
-        </li>
-        <% }) %> <% } %>
+        <% }) %> <% } else { %>
+        <h2>No Artists in collection.</h2>
+        <% } %>
       </ul>
     </main>
     <%- include('partials/footer')%>

@@ -22,7 +22,7 @@ const validateForm = [
 
 exports.getAlbums = asyncHandler(async (req, res) => {
   const albums = await db.getAllAlbums();
-  res.render("listView", { title: "Album Search", albums: albums });
+  res.render("albumList", { title: "Album Search", albums: albums });
 });
 
 exports.getAlbumDetail = asyncHandler(async (req, res) => {
