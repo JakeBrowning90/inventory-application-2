@@ -16,14 +16,14 @@
         <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
         <li>
           <a href="artists/<%= artist.id %>/detail">
-            <p><%= artist.id %> | <%= artist.name %></p>
+            <p><%= artist.name %></p>
           </a>
         </li>
         <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) =>
         { %>
         <li>
           <a href="albums/<%= album.id %>/detail">
-            <p><%= album.id %> | <%= album.title %></p>
+            <p><%= album.title %></p>
           </a>
         </li>
         <% }) %> <% } %>
