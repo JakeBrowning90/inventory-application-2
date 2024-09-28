@@ -3,7 +3,7 @@ const router = express.Router();
 
 const albumController = require("../controllers/albumController");
 
-// GET all albums
+// GET all or searched albums
 router.get("/", albumController.getAlbums);
 
 // GET single album detail

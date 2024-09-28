@@ -21,8 +21,18 @@ const validateForm = [
 ];
 
 exports.getAlbums = asyncHandler(async (req, res) => {
-  const albums = await db.getAllAlbums();
-  res.render("albumList", { title: "Album Search", albums: albums });
+  const query = req.query.searchValue;
+  let albums;
+  if (query) {
+    albums = await db.getSearchAlbums(query);
+  } else {
+    albums = await db.getAllAlbums();
+  }
+  res.render("albumList", {
+    title: "Album Search",
+    albums: albums,
+    query: query,
+  });
 });
 
 exports.getAlbumDetail = asyncHandler(async (req, res) => {
