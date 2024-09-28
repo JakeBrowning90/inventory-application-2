@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-  </head>
+  <%- include('partials/head')%>
+
   <body>
+    <%- include('partials/header')%>
+
     <main>
-      <a href="/">Home</a>
+      <a href="/albums">Back to Albums</a>
       <p>TBA: Errors partial, replace required tag</p>
       <form method="POST">
         <label for="title">Album title:</label>
-        <input type="text" name="title" value="<%= (locals.album) ? album.title : '' %>" required />
+        <input
+          type="text"
+          name="title"
+          value="<%= (locals.album) ? album.title : '' %>"
+          required
+        />
         <label for="artist">Artist(s):</label>
         <select name="artist" multiple required>
           <% artists.forEach((artist) => { %>
@@ -19,11 +23,22 @@
           <%})%>
         </select>
         <label for="year">Release year:</label>
-        <input type="number" name="year" value="<%= (locals.album) ? album.year : '' %>" required />
+        <input
+          type="number"
+          name="year"
+          value="<%= (locals.album) ? album.year : '' %>"
+          required
+        />
         <label for="notes">Notes:</label>
-        <input type="text" name="notes" value="<%= (locals.album) ? album.notes : '' %>" required />
+        <input
+          type="text"
+          name="notes"
+          value="<%= (locals.album) ? album.notes : '' %>"
+          required
+        />
         <button>Submit</button>
       </form>
     </main>
+    <%- include('partials/footer')%>
   </body>
 </html>

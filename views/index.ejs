@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
-  </head>
+  <%- include('partials/head')%>
   <body>
-    <h1>Homepage</h1>
-    <p>Artist count: TBA</p>
-    <a href="/artists">Search Artists</a>
-    <p>Album count: TBA</p>
-    <a href="/albums">Search Albums</a>
+    <%- include('partials/header')%>
+    <main>
+      <p>Artist count: <%= artistCount %></p>
+      <a href="/artists">Search Artists</a>
+      <p>Album count: <%= albumCount %></p>
+      <a href="/albums">Search Albums</a>
+    </main>
+    <%- include('partials/footer')%>
   </body>
 </html>

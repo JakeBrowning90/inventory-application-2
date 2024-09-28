@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %> Search</title>
-  </head>
+  <%- include('partials/head')%>
   <body>
-    <h1><%= title %> Search</h1>
-    <a href="/">Home</a>
-    <p>To-do: Add <%= title %> link</p>
-    <% if (locals.artists) { %>
-    <a href="/artists/new">Add New Artist / Group</a>
-    <% } %> <% if (locals.albums) { %>
-    <a href="/albums/new">Add New Album</a>
-    <% } %>
+    <%- include('partials/header')%>
+    <main>
+      <h1><%= title %></h1>
+      <% if (locals.artists) { %>
+      <a href="/artists/new">Add New Artist / Group</a>
+      <% } %> <% if (locals.albums) { %>
+      <a href="/albums/new">Add New Album</a>
+      <% } %>
 
-    <p>To-do: Search <%= title %> form</p>
-    <p>Done: Render <%= title %> list</p>
-    <ul>
-      <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
-      <li>
-        <a href="artists/<%= artist.id %>/detail">
-          <p><%= artist.id %> | <%= artist.name %></p>
-        </a>
-      </li>
-      <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) => {
-      %>
-      <li>
-        <a href="albums/<%= album.id %>/detail">
-          <p><%= album.id %> | <%= album.title %></p>
-        </a>
-      </li>
-      <% }) %> <% } %>
-    </ul>
+      <p>To-do: Search <%= title %> form</p>
+      <ul>
+        <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
+        <li>
+          <a href="artists/<%= artist.id %>/detail">
+            <p><%= artist.id %> | <%= artist.name %></p>
+          </a>
+        </li>
+        <% }) %> <% } %> <% if (locals.albums) { %> <% albums.forEach((album) =>
+        { %>
+        <li>
+          <a href="albums/<%= album.id %>/detail">
+            <p><%= album.id %> | <%= album.title %></p>
+          </a>
+        </li>
+        <% }) %> <% } %>
+      </ul>
+    </main>
+    <%- include('partials/footer')%>
   </body>
 </html>

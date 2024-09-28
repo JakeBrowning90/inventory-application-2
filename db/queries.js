@@ -1,5 +1,10 @@
 const pool = require("./pool");
 
+async function getArtistCount() {
+  const { rows } = await pool.query("SELECT COUNT(*) FROM artists");
+  return rows;
+}
+
 async function getAllArtists() {
   const { rows } = await pool.query("SELECT * FROM artists ORDER BY name ASC");
   return rows;
@@ -21,7 +26,6 @@ async function insertArtist(artist) {
 }
 
 async function updateArtist(id, artist) {
-  console.log(artist);
   await pool.query(
     "UPDATE artists SET name = ($1), activeyear = ($2), notes = ($3) WHERE id = ($4)",
     [artist.name, artist.activeyear, artist.notes, id]
@@ -30,10 +34,12 @@ async function updateArtist(id, artist) {
 
 async function deleteArtist(id) {
   // Delete artist from artist table
-  await pool.query(
-    "DELETE FROM artists WHERE id = ($1)",
-    [id]
-  );
+  await pool.query("DELETE FROM artists WHERE id = ($1)", [id]);
+}
+
+async function getAlbumCount() {
+  const { rows } = await pool.query("SELECT COUNT(*) FROM albums");
+  return rows;
 }
 
 async function getAllAlbums() {
@@ -92,10 +98,7 @@ async function updateAlbum(id, album) {
     [album.title, album.year, album.notes, id]
   );
   // Clear existing credits from credits table
-  await pool.query(
-    "DELETE FROM album_credits WHERE album_id = ($1)",
-    [id]
-  );
+  await pool.query("DELETE FROM album_credits WHERE album_id = ($1)", [id]);
   // Insert albumid and artistid(s) into credits table
   if (Array.isArray(album.artist)) {
     album.artist.forEach((artist) => {
@@ -114,23 +117,19 @@ async function updateAlbum(id, album) {
 
 async function deleteAlbum(id) {
   // Delete album from album_credits table
-  await pool.query(
-    "DELETE FROM album_credits WHERE album_id = ($1)",
-    [id]
-  );
+  await pool.query("DELETE FROM album_credits WHERE album_id = ($1)", [id]);
   // Delete album from album table
-  await pool.query(
-    "DELETE FROM albums WHERE id = ($1)",
-    [id]
-  );
+  await pool.query("DELETE FROM albums WHERE id = ($1)", [id]);
 }
 
 module.exports = {
+  getArtistCount,
   getAllArtists,
   getArtistByID,
   insertArtist,
   updateArtist,
   deleteArtist,
+  getAlbumCount,
   getAllAlbums,
   getAlbumByID,
   getAlbumsByArtist,

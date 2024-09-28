@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 exports.getAlbums = asyncHandler(async (req, res) => {
   const albums = await db.getAllAlbums();
-  res.render("listView", { title: "Album", albums: albums });
+  res.render("listView", { title: "Album Search", albums: albums });
 });
 
 exports.getAlbumDetail = asyncHandler(async (req, res) => {
@@ -27,7 +27,6 @@ exports.getAlbumForm = asyncHandler(async (req, res) => {
 exports.postAlbumForm = [
   asyncHandler(async (req, res) => {
     const album = req.body;
-    // console.log(album);
     await db.insertAlbum(album);
     res.redirect("/albums");
   }),

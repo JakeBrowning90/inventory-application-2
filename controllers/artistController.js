@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 exports.getArtists = asyncHandler(async (req, res) => {
   const artists = await db.getAllArtists();
-  res.render("listView", { title: "Artist", artists: artists });
+  res.render("listView", { title: "Artist Search", artists: artists });
 });
 
 exports.getArtistDetail = asyncHandler(async (req, res) => {

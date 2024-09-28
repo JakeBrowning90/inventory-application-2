@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+  <%- include('partials/head')%>
   <body>
+    <%- include('partials/header')%>
     <main>
       <h1><%= title %></h1>
       <a href="/artists/<%= artist.id %>/detail">Back</a>
@@ -13,9 +10,7 @@
       <p>First active: <%= artist.activeyear %></p>
       <p><%= artist.notes %></p>
       <% if (albumList.length !== 0) { %>
-      <h2>
-        Warning: please update or delete the albums shown to continue.
-      </h2>
+      <h2>Warning: please update or delete the albums shown to continue.</h2>
       <p>Albums:</p>
       <ul>
         <% albumList.forEach((album) => {%>
@@ -23,9 +18,12 @@
         <% }) %>
       </ul>
       <% } else { %>
-      <h2>No albums in database. Are you sure you want to delete this artist?</h2>
+      <h2>
+        No albums in database. Are you sure you want to delete this artist?
+      </h2>
       <form method="POST"><button>Delete</button></form>
       <% } %>
     </main>
+    <%- include('partials/footer')%>
   </body>
 </html>
