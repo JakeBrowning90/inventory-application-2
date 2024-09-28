@@ -18,10 +18,10 @@
           minlength="1"
           maxlength="60"
           value="<%= (locals.album) ? album.title : '' %>"
-          required
+          
         />
         <label for="artist">Artist(s):</label>
-        <select name="artist" multiple required>
+        <select name="artist" multiple>
           <% artists.forEach((artist) => { %>
           <option value="<%= artist.id %>"><%=artist.name%></option>
           <%})%>
@@ -33,16 +33,12 @@
           min="1800"
           max="2100"
           value="<%= (locals.album) ? album.year : '' %>"
-          required
+          
         />
         <label for="notes">Notes:</label>
-        <textarea
-          name="notes"
-          minlength="1"
-          maxlength="1000"
-          value="<%= (locals.album) ? album.notes : '' %>"
-          required
-        ></textarea>
+        <textarea name="notes" minlength="1" maxlength="1000" >
+<%= (locals.album) ? album.notes : '' %></textarea
+        >
         <button>Submit</button>
       </form>
     </main>

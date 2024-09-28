@@ -6,15 +6,15 @@ const validateForm = [
   body("name")
     .trim()
     .isLength({ min: 1, max: 60 })
-    .withMessage("Name must contain between 1 and 60 characters"),
+    .withMessage("Name must contain between 1 and 60 characters."),
   body("activeyear")
     .trim()
     .isInt({ min: 1800, max: 2100 })
-    .withMessage("First active year must be between 1800 and 2100"),
+    .withMessage("First active year must be between 1800 and 2100."),
   body("notes")
     .trim()
     .isLength({ min: 1, max: 60 })
-    .withMessage("Name must contain between 1 and 1000 characters"),
+    .withMessage("Name must contain between 1 and 1000 characters."),
 ];
 
 exports.getArtists = asyncHandler(async (req, res) => {
