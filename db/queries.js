@@ -10,6 +10,14 @@ async function getAllArtists() {
   return rows;
 }
 
+async function getSearchArtists(query) {
+  const { rows } = await pool.query(
+    "SELECT * FROM artists WHERE LOWER(name) LIKE LOWER ('%' || ($1) || '%') ORDER BY name ASC",
+    [query]
+  );
+  return rows;
+}
+
 async function getArtistByID(id) {
   const { rows } = await pool.query("SELECT * FROM artists WHERE id = ($1)", [
     id,
@@ -125,6 +133,7 @@ async function deleteAlbum(id) {
 module.exports = {
   getArtistCount,
   getAllArtists,
+  getSearchArtists,
   getArtistByID,
   insertArtist,
   updateArtist,

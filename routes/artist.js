@@ -3,7 +3,7 @@ const router = express.Router();
 
 const artistController = require("../controllers/artistController");
 
-// GET all artists
+// GET all or searched artists
 router.get("/", artistController.getArtists);
 
 // GET single artist detail

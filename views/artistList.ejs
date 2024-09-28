@@ -10,9 +10,9 @@
 
       <p>To-do: Search <%= title %> form</p>
 
-      <form method="GET" action="">
+      <form method="GET" action="/artists">
         <label for="">Search:</label>
-        <input type="text" name="searchValue" id="searchValue" />
+        <input type="text" name="searchValue" id="searchValue" value="<%= query %>" />
         <button type="submit">Search</button>
       </form>
 
