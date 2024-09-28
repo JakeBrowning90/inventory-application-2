@@ -15,6 +15,8 @@
         <input
           type="text"
           name="title"
+          minlength="1"
+          maxlength="60"
           value="<%= (locals.album) ? album.title : '' %>"
           required
         />
@@ -28,16 +30,19 @@
         <input
           type="number"
           name="year"
+          min="1800"
+          max="2100"
           value="<%= (locals.album) ? album.year : '' %>"
           required
         />
         <label for="notes">Notes:</label>
-        <input
-          type="text"
+        <textarea
           name="notes"
+          minlength="1"
+          maxlength="1000"
           value="<%= (locals.album) ? album.notes : '' %>"
           required
-        />
+        ></textarea>
         <button>Submit</button>
       </form>
     </main>
