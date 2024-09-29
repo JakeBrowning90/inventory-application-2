@@ -13,8 +13,8 @@ const validateForm = [
     .withMessage("First active year must be between 1800 and 2100."),
   body("notes")
     .trim()
-    .isLength({ min: 1, max: 60 })
-    .withMessage("Name must contain between 1 and 1000 characters."),
+    .isLength({ min: 1, max: 1000 })
+    .withMessage("Notes must contain between 1 and 1000 characters."),
 ];
 
 exports.getArtists = asyncHandler(async (req, res) => {
@@ -45,7 +45,11 @@ exports.getArtistDetail = asyncHandler(async (req, res) => {
 });
 
 exports.getArtistForm = asyncHandler(async (req, res) => {
-  res.render("artistForm", { title: "New Artist / Group" });
+  res.render("artistForm", {
+    title: "New Artist / Group",
+    backLink: "/artists",
+    backText: "Back to Artists",
+  });
 });
 
 exports.postArtistForm = [
@@ -58,6 +62,8 @@ exports.postArtistForm = [
       return res.status(400).render("artistForm", {
         title: "New Artist / Group",
         artist: artist,
+        backLink: "/artists",
+        backText: "Back to Artists",
         errors: errors.array(),
       });
     }
@@ -69,7 +75,12 @@ exports.postArtistForm = [
 
 exports.getArtistUpdate = asyncHandler(async (req, res) => {
   const artist = await db.getArtistByID(req.params.id);
-  res.render("artistForm", { title: "Update Artist / Group", artist: artist });
+  res.render("artistForm", {
+    title: "Update Artist / Group",
+    artist: artist,
+    backLink: `/artists/${req.params.id}/detail`,
+    backText: "Back to Artist Detail",
+  });
 });
 
 exports.postArtistUpdate = [
@@ -81,6 +92,8 @@ exports.postArtistUpdate = [
       return res.status(400).render("artistForm", {
         title: "Update Artist / Group",
         artist: artist,
+        backLink: `/artists/${req.params.id}/detail`,
+        backText: "Back to Artist Detail",
         errors: errors.array(),
       });
     }

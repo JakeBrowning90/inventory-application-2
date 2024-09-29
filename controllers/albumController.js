@@ -49,7 +49,12 @@ exports.getAlbumDetail = asyncHandler(async (req, res) => {
 
 exports.getAlbumForm = asyncHandler(async (req, res) => {
   const artists = await db.getAllArtists();
-  res.render("albumForm", { title: "New Album", artists: artists });
+  res.render("albumForm", {
+    title: "New Album",
+    artists: artists,
+    backLink: "/albums",
+    backText: "Back to Albums",
+  });
 });
 
 exports.postAlbumForm = [
@@ -63,6 +68,8 @@ exports.postAlbumForm = [
         title: "New Album",
         album: album,
         artists: artists,
+        backLink: "/albums",
+        backText: "Back to Albums",
         errors: errors.array(),
       });
     }
@@ -78,6 +85,8 @@ exports.getAlbumUpdate = asyncHandler(async (req, res) => {
     title: "Update Album",
     album: album,
     artists: artists,
+    backLink: `/albums/${req.params.id}/detail`,
+    backText: "Back to Album Detail",
   });
 });
 
@@ -92,6 +101,8 @@ exports.postAlbumUpdate = [
         title: "New Album",
         album: album,
         artists: artists,
+        backLink: `/albums/${req.params.id}/detail`,
+        backText: "Back to Album Detail",
         errors: errors.array(),
       });
     }

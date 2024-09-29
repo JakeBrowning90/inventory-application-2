@@ -6,8 +6,7 @@
     <%- include('partials/header')%>
 
     <main>
-      <p>TBA: conditional link to list or item</p>
-      <a href="/albums">Back to Albums</a>
+      <a href="<%= locals.backLink %>"><%= locals.backText %></a>
       <%- include('partials/errors')%>
 
       <form method="POST">
