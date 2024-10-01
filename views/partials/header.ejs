@@ -4,6 +4,14 @@
     <a href="/artists">Artists</a>
     <a href="/albums">Albums</a>
     <a href="/tutorial">Tutorial</a>
-    <a href="/">TBA: login</a>
+
+    <% if (locals.currentUser) { %>
+    <p><%= currentUser.username%></p>
+    <a href="/logout">Log Out</a>
+
+    <% } else { %>
+    <a href="/login">Log In</a>
+    <a href="/signup">(TEMP) Sign Up</a>
+    <% } %>
   </nav>
 </header>
