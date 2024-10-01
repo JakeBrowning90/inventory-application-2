@@ -45,11 +45,13 @@ exports.getArtistDetail = asyncHandler(async (req, res) => {
 });
 
 exports.getArtistForm = asyncHandler(async (req, res) => {
-  res.render("artistForm", {
-    title: "New Artist / Group",
-    backLink: "/artists",
-    backText: "Back to Artists",
-  });
+  if (req.user) {
+    res.render("artistForm", {
+      title: "New Artist / Group",
+      backLink: "/artists",
+      backText: "Back to Artists",
+    });
+  } else res.redirect("/login");
 });
 
 exports.postArtistForm = [
@@ -74,13 +76,15 @@ exports.postArtistForm = [
 ];
 
 exports.getArtistUpdate = asyncHandler(async (req, res) => {
-  const artist = await db.getArtistByID(req.params.id);
-  res.render("artistForm", {
-    title: "Update Artist / Group",
-    artist: artist,
-    backLink: `/artists/${req.params.id}/detail`,
-    backText: "Back to Artist Detail",
-  });
+  if (req.user) {
+    const artist = await db.getArtistByID(req.params.id);
+    res.render("artistForm", {
+      title: "Update Artist / Group",
+      artist: artist,
+      backLink: `/artists/${req.params.id}/detail`,
+      backText: "Back to Artist Detail",
+    });
+  } else res.redirect("/login");
 });
 
 exports.postArtistUpdate = [
@@ -104,15 +108,17 @@ exports.postArtistUpdate = [
 ];
 
 exports.getArtistDelete = asyncHandler(async (req, res) => {
-  // Get artist
-  const artist = await db.getArtistByID(req.params.id);
-  // Get albums by artist
-  const albumList = await db.getAlbumsByArtist(req.params.id);
-  res.render("artistDelete", {
-    title: "Delete Artist",
-    artist: artist,
-    albumList: albumList,
-  });
+  if (req.user) {
+    // Get artist
+    const artist = await db.getArtistByID(req.params.id);
+    // Get albums by artist
+    const albumList = await db.getAlbumsByArtist(req.params.id);
+    res.render("artistDelete", {
+      title: "Delete Artist",
+      artist: artist,
+      albumList: albumList,
+    });
+  } else res.redirect("/login");
 });
 
 exports.postArtistDelete = [

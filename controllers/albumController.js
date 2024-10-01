@@ -48,13 +48,15 @@ exports.getAlbumDetail = asyncHandler(async (req, res) => {
 });
 
 exports.getAlbumForm = asyncHandler(async (req, res) => {
-  const artists = await db.getAllArtists();
-  res.render("albumForm", {
-    title: "New Album",
-    artists: artists,
-    backLink: "/albums",
-    backText: "Back to Albums",
-  });
+  if (req.user) {
+    const artists = await db.getAllArtists();
+    res.render("albumForm", {
+      title: "New Album",
+      artists: artists,
+      backLink: "/albums",
+      backText: "Back to Albums",
+    });
+  } else res.redirect("/login");
 });
 
 exports.postAlbumForm = [
@@ -79,15 +81,17 @@ exports.postAlbumForm = [
 ];
 
 exports.getAlbumUpdate = asyncHandler(async (req, res) => {
-  const album = await db.getAlbumByID(req.params.id);
-  const artists = await db.getAllArtists();
-  res.render("albumForm", {
-    title: "Update Album",
-    album: album,
-    artists: artists,
-    backLink: `/albums/${req.params.id}/detail`,
-    backText: "Back to Album Detail",
-  });
+  if (req.user) {
+    const album = await db.getAlbumByID(req.params.id);
+    const artists = await db.getAllArtists();
+    res.render("albumForm", {
+      title: "Update Album",
+      album: album,
+      artists: artists,
+      backLink: `/albums/${req.params.id}/detail`,
+      backText: "Back to Album Detail",
+    });
+  } else res.redirect("/login");
 });
 
 exports.postAlbumUpdate = [
@@ -113,20 +117,21 @@ exports.postAlbumUpdate = [
 ];
 
 exports.getAlbumDelete = asyncHandler(async (req, res) => {
-  // Get album
-  const album = await db.getAlbumByID(req.params.id);
-  // Get artists for album
-  const artistList = await db.getArtistsByAlbum(req.params.id);
-  res.render("albumDelete", {
-    title: "Delete Album",
-    album: album,
-    artistList: artistList,
-  });
+  if (req.user) {
+    // Get album
+    const album = await db.getAlbumByID(req.params.id);
+    // Get artists for album
+    const artistList = await db.getArtistsByAlbum(req.params.id);
+    res.render("albumDelete", {
+      title: "Delete Album",
+      album: album,
+      artistList: artistList,
+    });
+  } else res.redirect("/login");
 });
 
 exports.postAlbumDelete = [
   asyncHandler(async (req, res) => {
-    // console.log(req.params.id);
     await db.deleteAlbum(req.params.id);
     res.redirect("/albums");
   }),
