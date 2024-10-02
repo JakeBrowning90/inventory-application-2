@@ -19,6 +19,7 @@ const validateForm = [
 
 exports.getArtists = asyncHandler(async (req, res) => {
   const query = req.query.searchValue;
+  // Get all artists or by query match
   let artists;
   if (query) {
     artists = await db.getSearchArtists(query);
@@ -58,9 +59,9 @@ exports.postArtistForm = [
   validateForm,
   asyncHandler(async (req, res) => {
     const artist = req.body;
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // Show form with error messages
       return res.status(400).render("artistForm", {
         title: "New Artist / Group",
         artist: artist,
@@ -69,7 +70,6 @@ exports.postArtistForm = [
         errors: errors.array(),
       });
     }
-
     await db.insertArtist(artist);
     res.redirect("/artists");
   }),
@@ -93,6 +93,7 @@ exports.postArtistUpdate = [
     const artist = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // Show form with error messages
       return res.status(400).render("artistForm", {
         title: "Update Artist / Group",
         artist: artist,
@@ -101,7 +102,6 @@ exports.postArtistUpdate = [
         errors: errors.array(),
       });
     }
-    // const artist = req.body;
     await db.updateArtist(req.params.id, artist);
     res.redirect(`/artists/${req.params.id}/detail`);
   }),

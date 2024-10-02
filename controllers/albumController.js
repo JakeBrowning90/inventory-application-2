@@ -21,6 +21,7 @@ const validateForm = [
 ];
 
 exports.getAlbums = asyncHandler(async (req, res) => {
+  // Get all albums or by query match
   const query = req.query.searchValue;
   let albums;
   if (query) {
@@ -65,6 +66,7 @@ exports.postAlbumForm = [
     const album = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // Show form again with error messages
       const artists = await db.getAllArtists();
       return res.status(400).render("albumForm", {
         title: "New Album",
@@ -100,6 +102,7 @@ exports.postAlbumUpdate = [
     const album = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // Show form again with error messages
       const artists = await db.getAllArtists();
       return res.status(400).render("albumForm", {
         title: "New Album",

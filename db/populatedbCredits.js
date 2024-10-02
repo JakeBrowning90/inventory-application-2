@@ -11,16 +11,11 @@ INSERT INTO album_credits (album_id, artist_id)
 VALUES
   (1, 1),
   (2, 2),
-  (3, 3),
-  (4, 4),
-  (5, 1),
-  (6, 2),
-  (7, 5),
-  (7, 6);
+  (3, 3);
 `;
 
 async function main() {
-  console.log("seeding...");
+  console.log("seeding credits...");
   const client = new Client({
     connectionString: process.env.CONNECTION_STRING,
   });

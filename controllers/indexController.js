@@ -80,7 +80,6 @@ exports.postSignup = asyncHandler(async (req, res, next) => {
         res.redirect("/sign-up");
       } else {
         await db.insertUser(req.body.username, hashedPassword);
-
         res.redirect("/");
       }
     });
