@@ -19,9 +19,9 @@ router.get("/logout", indexController.getLogout);
 router.post("/login", indexController.postLogin);
 
 // GET signup page
-router.get("/signup", indexController.getSignup);
+// router.get("/signup", indexController.getSignup);
 
 // Post signup page
-router.post("/signup", indexController.postSignup);
+// router.post("/signup", indexController.postSignup);
 
 module.exports = router;
