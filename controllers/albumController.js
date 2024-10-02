@@ -16,7 +16,7 @@ const validateForm = [
     .withMessage("Release year must be between 1800 and 2100."),
   body("notes")
     .trim()
-    .isLength({ min: 1, max: 60 })
+    .isLength({ min: 1, max: 1000 })
     .withMessage("Notes must contain between 1 and 1000 characters."),
 ];
 
