@@ -37,11 +37,16 @@ passport.deserializeUser(async (id, done) => {
 
 exports.getIndex = asyncHandler(async (req, res) => {
   const artistCount = await db.getArtistCount();
+  const artistList = await db.getAllArtists();
   const albumCount = await db.getAlbumCount();
+  const albumList = await db.getAllAlbums();
+
   res.render("index", {
     title: "Homepage",
     artistCount: artistCount[0].count,
+    artistList: artistList,
     albumCount: albumCount[0].count,
+    albumList: albumList,
   });
 });
 

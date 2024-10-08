@@ -3,9 +3,20 @@
   <%- include('partials/head')%>
   <body>
     <%- include('partials/header')%>
-    <main>
+    <main class="indexMain">
       <p>Artist count: <%= artistCount %></p>
       <a href="/artists">Search Artists</a>
+      <ul>
+        <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
+        <li>
+          <a href="artists/<%= artist.id %>/detail">
+            <p><%= artist.name %></p>
+          </a>
+        </li>
+        <% }) %> <% } else { %>
+        <h2>No Artists in collection.</h2>
+        <% } %>
+      </ul>
       <p>Album count: <%= albumCount %></p>
       <a href="/albums">Search Albums</a>
     </main>
