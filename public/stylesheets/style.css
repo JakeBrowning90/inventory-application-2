@@ -29,3 +29,15 @@ main {
   background-color: rgb(208, 208, 255);
   flex-grow: 1;
 }
+
+.indexMain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 1fr;
+
+}
+
+.indexToolbar {
+  background-color: rgb(185, 252, 191);
+  grid-column: 1 / -1;
+}

@@ -4,21 +4,42 @@
   <body>
     <%- include('partials/header')%>
     <main class="indexMain">
-      <p>Artist count: <%= artistCount %></p>
-      <a href="/artists">Search Artists</a>
-      <ul>
-        <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
-        <li>
-          <a href="artists/<%= artist.id %>/detail">
-            <p><%= artist.name %></p>
-          </a>
-        </li>
-        <% }) %> <% } else { %>
-        <h2>No Artists in collection.</h2>
+      <%- include('partials/toolbar')%>
+      <div>
+        <% if(locals.query) { %>
+        <p><%= artistCount %> matching Artist(s)</p>
+
+        <% } else { %>
+        <p><%= artistCount %> Artists in collection</p>
+
         <% } %>
-      </ul>
-      <p>Album count: <%= albumCount %></p>
-      <a href="/albums">Search Albums</a>
+
+        <ul>
+          <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
+          <li>
+            <a href="artists/<%= artist.id %>/detail">
+              <p><%= artist.name %></p>
+            </a>
+          </li>
+          <% }) %> <% } else { %>
+          <h2>No Artists in collection.</h2>
+          <% } %>
+        </ul>
+      </div>
+      <div>
+        <p>Album count: <%= albumCount %></p>
+        <ul>
+          <% if (locals.albumList) { %> <% albumList.forEach((album) => { %>
+          <li>
+            <a href="albums/<%= album.id %>/detail">
+              <p><%= album.title %></p>
+            </a>
+          </li>
+          <% }) %> <% } else { %>
+          <h2>No Albums in collection.</h2>
+          <% } %>
+        </ul>
+      </div>
     </main>
     <%- include('partials/footer')%>
   </body>

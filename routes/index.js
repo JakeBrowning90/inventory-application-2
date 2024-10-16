@@ -7,6 +7,9 @@ const indexController = require("../controllers/indexController");
 router.get("/", indexController.getIndex);
 
 // GET tutorial page
+router.get("/search", indexController.getSearch);
+
+// GET tutorial page
 router.get("/tutorial", indexController.getTutorial);
 
 // GET login page

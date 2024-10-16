@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head')%>
+  <body>
+    <%- include('partials/header')%>
+    <main>
+
+      <%- include('partials/toolbar')%>
+      <h1><%= title %></h1>
+
+      <h2>Artists:</h2>
+      <ul>
+        <% if (locals.artists) { %> <% artists.forEach((artist) => { %>
+        <li>
+          <a href="artists/<%= artist.id %>/detail">
+            <p><%= artist.name %></p>
+          </a>
+        </li>
+        <% }) %> <% } else { %>
+        <p>No matching artists.</p>
+        <% } %>
+      </ul>
+      <h2>Albums:</h2>
+      <ul>
+        <% if (locals.albums) { %> <% albums.forEach((album) => { %>
+        <li>
+          <a href="albums/<%= album.id %>/detail">
+            <p><%= album.title %></p>
+          </a>
+        </li>
+        <% }) %> <% } else { %>
+          <p>No matching albums.</p>
+          <% } %>
+      </ul>
+
+
+    </main>
+    <%- include('partials/footer')%>
+  </body>
+</html>

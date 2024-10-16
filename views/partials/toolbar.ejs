@@ -1,0 +1,19 @@
+<div class="indexToolbar">
+  <form method="GET" action="/">
+    <input
+      type="text"
+      name="searchValue"
+      id="searchValue"
+      value="<%= query %>"
+    />
+    <button type="submit">Search</button>
+  </form>
+  <a href="">Add</a>
+  <% if (locals.currentUser) { %>
+  <p><%= currentUser.username%></p>
+  <a href="/logout">Log Out</a>
+
+  <% } else { %>
+  <a href="/login">Log In</a>
+  <% } %>
+</div>
