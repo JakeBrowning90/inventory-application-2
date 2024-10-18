@@ -97,6 +97,12 @@ exports.getSearch = asyncHandler(async (req, res) => {
   });
 });
 
+exports.getNew = asyncHandler(async (req, res) => {
+  if (req.user) {
+    res.render("formSplit", { title: "Add New" });
+  } else res.redirect("/login");
+});
+
 exports.getTutorial = asyncHandler(async (req, res) => {
   res.render("tutorial", { title: "Tutorial" });
 });

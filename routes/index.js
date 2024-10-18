@@ -12,10 +12,13 @@ router.get("/search", indexController.getSearch);
 // GET tutorial page
 router.get("/tutorial", indexController.getTutorial);
 
+// GET new entry option page
+router.get("/new", indexController.getNew);
+
 // GET login page
 router.get("/login", indexController.getLogin);
 
-// GET logiut 
+// GET logout 
 router.get("/logout", indexController.getLogout);
 
 // Post login page

@@ -1,5 +1,5 @@
 <div class="indexToolbar">
-  <form method="GET" action="/">
+  <form method="GET" action="/" class="toolbarForm">
     <input
       type="text"
       name="searchValue"
@@ -8,12 +8,14 @@
     />
     <button type="submit">Search</button>
   </form>
-  <a href="">Add</a>
-  <% if (locals.currentUser) { %>
-  <p><%= currentUser.username%></p>
-  <a href="/logout">Log Out</a>
+  <a href="/new">Add</a>
+  <div>
+    <% if (locals.currentUser) { %>
+    <p><%= currentUser.username%></p>
+    <a href="/logout">Log Out</a>
 
-  <% } else { %>
-  <a href="/login">Log In</a>
-  <% } %>
+    <% } else { %>
+    <a href="/login">Log In</a>
+    <% } %>
+  </div>
 </div>

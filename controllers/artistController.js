@@ -49,8 +49,8 @@ exports.getArtistForm = asyncHandler(async (req, res) => {
   if (req.user) {
     res.render("artistForm", {
       title: "New Artist / Group",
-      backLink: "/artists",
-      backText: "Back to Artists",
+      backLink: "/",
+      backText: "Back",
     });
   } else res.redirect("/login");
 });

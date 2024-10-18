@@ -54,8 +54,8 @@ exports.getAlbumForm = asyncHandler(async (req, res) => {
     res.render("albumForm", {
       title: "New Album",
       artists: artists,
-      backLink: "/albums",
-      backText: "Back to Albums",
+      backLink: "/new",
+      backText: "Back",
     });
   } else res.redirect("/login");
 });

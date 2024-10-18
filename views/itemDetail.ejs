@@ -6,13 +6,16 @@
 
     <main>
       <!-- <h1><%= title %></h1> -->
-      <a href="/search">Back to Search</a>
+      <a href="/">Home</a>
 
       <% if (locals.artist) { %>
       <!-- <a href="/artists">Back to Artists</a> -->
       <a href="/artists/<%= artist.id %>/update">Update Artist</a>
       <a href="/artists/<%= artist.id %>/delete">Delete Artist</a>
-      <p>TBA: Portrait</p>
+      <div class="detailArtistPortrait">
+        <p>TBA: Portrait</p>
+
+      </div>
       <p><%= artist.name %></p>
       <p>Debut: <%= artist.activeyear %></p>
       <p><%= artist.notes %></p>
@@ -28,7 +31,10 @@
       <!-- <a href="/albums">Back to Albums</a> -->
       <a href="/albums/<%= album.id %>/update">Update Album</a>
       <a href="/albums/<%= album.id %>/delete">Delete Album</a>
-      <p>TBA: Album art</p>
+      <div class="detailAlbumArt">
+        <p>TBA: Album art</p>
+
+      </div>
       <p><%= album.title %></p>
       <p>Release: <%= album.year %></p>
       <p><%= album.notes %></p>

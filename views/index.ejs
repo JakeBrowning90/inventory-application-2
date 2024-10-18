@@ -4,20 +4,26 @@
   <body>
     <%- include('partials/header')%>
     <main class="indexMain">
-      <%- include('partials/toolbar')%>
-      <div>
-        <% if(locals.query) { %>
-        <p><%= artistCount %> matching Artist(s)</p>
+      <%- include('partials/toolbar')%> <% if(locals.query) { %>
+      <h2><%= artistCount %> matching Artist(s)</h2>
 
-        <% } else { %>
-        <p><%= artistCount %> Artists in collection</p>
+      <% } else { %>
+      <h2><%= artistCount %> Artist(s) in collection</h2>
 
-        <% } %>
+      <% } %> <% if(locals.query) { %>
+      <h2><%= albumCount %> matching Album(s)</h2>
 
+      <% } else { %>
+      <h2><%= albumCount %> Album(s) in collection</h2>
+
+      <% } %>
+
+      <div class="resultColumn">
         <ul>
           <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
           <li>
             <a href="artists/<%= artist.id %>/detail">
+              <div class="indexThumbnail">Portrait TBA</div>
               <p><%= artist.name %></p>
             </a>
           </li>
@@ -26,12 +32,12 @@
           <% } %>
         </ul>
       </div>
-      <div>
-        <p>Album count: <%= albumCount %></p>
+      <div class="resultColumn">
         <ul>
           <% if (locals.albumList) { %> <% albumList.forEach((album) => { %>
           <li>
             <a href="albums/<%= album.id %>/detail">
+              <div class="indexThumbnail">Cover art TBA</div>
               <p><%= album.title %></p>
             </a>
           </li>
