@@ -40,7 +40,7 @@ main {
   display: grid;
   height: 60%;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40px 50px 1fr;
+  grid-template-rows: 40px 1fr 5fr;
 
 }
 
@@ -62,11 +62,12 @@ main {
 .resultColumn > * {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 li {
   list-style: none;
+
 }
 
 .indexThumbnail {
@@ -75,14 +76,12 @@ li {
   background-color: pink;
 }
 
-.detailArtistPortrait {
+.detailImg {
   width: 75%;
   aspect-ratio: 1 / 1;
   background-color: pink;
 }
 
-.detailAlbumArt {
-  width: 75%;
-  aspect-ratio: 1 / 1;
-  background-color: pink;
+.artistImg {
+  border-radius: 50%;
 }

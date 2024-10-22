@@ -11,11 +11,16 @@
   <a href="/new">Add</a>
   <div>
     <% if (locals.currentUser) { %>
-    <p><%= currentUser.username%></p>
-    <a href="/logout">Log Out</a>
+    <div>
+      <p><%= currentUser.username%></p>
+      <a href="/logout">Log Out</a>
+    </div>
 
     <% } else { %>
-    <a href="/login">Log In</a>
+    <div>
+      <p></p>
+      <a href="/login">Log In</a>
+    </div>
     <% } %>
   </div>
 </div>
