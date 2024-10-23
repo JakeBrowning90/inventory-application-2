@@ -5,27 +5,27 @@
     <%- include('partials/header')%>
     <main class="indexMain">
       <%- include('partials/toolbar')%> <% if(locals.query) { %>
-      <div>
-        <h2><%= albumCount %></h2>
-        <h2>matching Album(s)</h2>
+      <div class="resultHeader">
+        <h1><%= albumCount %></h1>
+        <p>matching Album(s)</p>
       </div>
 
       <% } else { %>
-      <div>
-        <h2><%= albumCount %></h2>
-        <h2>Album(s) in collection</h2>
+      <div class="resultHeader">
+        <h1><%= albumCount %></h1>
+        <p>Album(s) in collection</p>
       </div>
 
       <% } %> <% if(locals.query) { %>
-      <div>
-        <h2><%= artistCount %></h2>
-        <h2>matching Artist(s)</h2>
-      </div>
+      <div class="resultHeader">
+        <h1><%= artistCount %></h1>
+        <p>matching Artist(s)</p>
+      </div class="resultHeader">
 
       <% } else { %>
-      <div>
-        <h2><%= artistCount %></h2>
-        <h2>Artist(s) in collection</h2>
+      <div class="resultHeader">
+        <h1><%= artistCount %></h1>
+        <p>Artist(s) in collection</p>
       </div>
 
       <% } %>
@@ -35,7 +35,7 @@
           <% if (locals.albumList) { %> <% albumList.forEach((album) => { %>
           <li>
             <a href="albums/<%= album.id %>/detail">
-              <div class="indexThumbnail">Cover art TBA</div>
+              <img src="/imgs/musicnote.png" class="entryImg indexThumbnail "/>
               <p><%= album.title %></p>
             </a>
           </li>
@@ -50,7 +50,7 @@
           <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
           <li>
             <a href="artists/<%= artist.id %>/detail">
-              <div class="indexThumbnail artistImg">Portrait TBA</div>
+              <img src="/imgs/personicon.png" class="entryImg indexThumbnail artistImg"/>
               <p><%= artist.name %></p>
             </a>
           </li>
@@ -60,6 +60,6 @@
         </ul>
       </div>
     </main>
-    <%- include('partials/footer')%>
+    <!-- <%- include('partials/footer')%> -->
   </body>
 </html>

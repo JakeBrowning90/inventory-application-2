@@ -4,53 +4,68 @@
   <body>
     <%- include('partials/header')%>
 
-    <main>
-      <!-- <h1><%= title %></h1> -->
-      <a href="/">Home</a>
+    <main class="detailMain">
+      <div class="detailNav">
+        <a href="/">Home</a>
+        <div>
+          <% if (locals.artist) { %>
+          <a href="/artists/<%= artist.id %>/update">Update Artist</a>
+          <a href="/artists/<%= artist.id %>/delete">Delete Artist</a>
+          <% } %> <% if (locals.album) { %>
+          <a href="/albums/<%= album.id %>/update">Update Album</a>
+          <a href="/albums/<%= album.id %>/delete">Delete Album</a>
+          <% } %>
+        </div>
+      </div>
 
       <% if (locals.artist) { %>
-      <!-- <a href="/artists">Back to Artists</a> -->
-      <a href="/artists/<%= artist.id %>/update">Update Artist</a>
-      <a href="/artists/<%= artist.id %>/delete">Delete Artist</a>
-      <div class="detailImg artistImg">
-        <p>TBA: Portrait</p>
 
+      <img src="/imgs/personicon.png" class="entryImg detailImg artistImg" />
+
+      <div class="detailHeadline">
+        <p><%= artist.name %></p>
+        <p>Debut: <%= artist.activeyear %></p>
       </div>
-      <p><%= artist.name %></p>
-      <p>Debut: <%= artist.activeyear %></p>
-      <p><%= artist.notes %></p>
-      <p>Albums:</p>
-      <ul>
+
+      <p class="detailNotes"><%= artist.notes %></p>
+      <p class="detailListHeading">Albums:</p>
+      <ul class="detailUL">
         <% if (locals.albumList) { %> <% albumList.forEach((album) => {%>
 
-        <li><a href="/albums/<%= album.id %>/detail"><%= album.title %></a></li>
-        <% }) %> <% } %>
-      </ul>
-
-      <% } %> <% if (locals.album) { %>
-      <!-- <a href="/albums">Back to Albums</a> -->
-      <a href="/albums/<%= album.id %>/update">Update Album</a>
-      <a href="/albums/<%= album.id %>/delete">Delete Album</a>
-      <div class="detailImg">
-        <p>TBA: Album art</p>
-
-      </div>
-      <p><%= album.title %></p>
-      <p>Release: <%= album.year %></p>
-      <p><%= album.notes %></p>
-      <p>Artist(s):</p>
-      <ul>
-        <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
-
         <li>
-          <a href="/artists/<%= artist.id %>/detail"><%= artist.name %></a>
+          <a href="/albums/<%= album.id %>/detail">
+            <img src="/imgs/musicnote.png" class="entryImg detailThumbnail"/>
+            <%= album.title %></a
+          >
         </li>
         <% }) %> <% } %>
       </ul>
 
+      <% } %> <% if (locals.album) { %>
+
+        <img src="/imgs/musicnote.png" class="entryImg detailImg" />
+
+      <div class="detailHeadline">
+        <p><%= album.title %></p>
+        <p>Release: <%= album.year %></p>
+      </div>
+
+      <p class="detailNotes"><%= album.notes %></p>
+      <p class="detailListHeading">Artist(s):</p>
+      <ul class="detailUL">
+        <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
+
+        <li>
+          <a href="/artists/<%= artist.id %>/detail">
+            <img src="/imgs/personicon.png" class="entryImg detailThumbnail artistImg" />
+            <%= artist.name %></a
+          >
+        </li>
+        <% }) %> <% } %>
+      </ul>
 
       <% } %>
     </main>
-    <%- include('partials/footer')%>
+    <!-- <%- include('partials/footer')%> -->
   </body>
 </html>
