@@ -5,6 +5,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  overflow: hidden;
 }
 
 * {
@@ -175,7 +176,8 @@ li > a {
   width: 80%;
 }
 
-.detailHeadline, .detailListHeading  {
+.detailHeadline,
+.detailListHeading {
   background-color: rgba(110, 110, 110, 0.368);
   border-radius: 10px;
 }
@@ -185,10 +187,23 @@ li > a {
 }
 
 .detailUL {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  overflow: auto;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* overflow: auto; */
+  /* gap: 20px; */
+  width: 120px;
+  height: 375px;
+  padding-top: 200px;
+  overflow-y: auto;
+  overflow-x: auto;
+  transform: rotate(-90deg) translateY(-200px);
+  transform-origin: right top;
+}
+
+.detailUL > * {
+  width: 120px;
+  transform: rotate(90deg);
+  transform-origin: right top;
 }
 
 ul {
@@ -242,5 +257,4 @@ li > * {
 
 .formSplitButton:hover {
   background-color: rgb(168, 95, 177);
-
 }

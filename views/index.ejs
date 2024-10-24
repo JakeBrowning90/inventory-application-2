@@ -7,25 +7,25 @@
       <%- include('partials/toolbar')%> <% if(locals.query) { %>
       <div class="resultHeader">
         <h1><%= albumCount %></h1>
-        <p>matching Album(s)</p>
+        <p>matching Albums</p>
       </div>
 
       <% } else { %>
       <div class="resultHeader">
         <h1><%= albumCount %></h1>
-        <p>Album(s) in collection</p>
+        <p>Albums in collection</p>
       </div>
 
       <% } %> <% if(locals.query) { %>
       <div class="resultHeader">
         <h1><%= artistCount %></h1>
-        <p>matching Artist(s)</p>
+        <p>matching Artists</p>
       </div class="resultHeader">
 
       <% } else { %>
       <div class="resultHeader">
         <h1><%= artistCount %></h1>
-        <p>Artist(s) in collection</p>
+        <p>Artists in collection</p>
       </div>
 
       <% } %>

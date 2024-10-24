@@ -104,7 +104,7 @@ exports.getNew = asyncHandler(async (req, res) => {
 });
 
 exports.getTutorial = asyncHandler(async (req, res) => {
-  res.render("tutorial", { title: "Tutorial" });
+  res.render("tutorial", { title: "App info" });
 });
 
 exports.getLogin = asyncHandler(async (req, res) => {

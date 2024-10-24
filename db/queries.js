@@ -27,13 +27,13 @@ async function getArtistCount() {
 }
 
 async function getAllArtists() {
-  const { rows } = await pool.query("SELECT * FROM artists ORDER BY name ASC");
+  const { rows } = await pool.query("SELECT * FROM artists ORDER BY lower(name) ASC");
   return rows;
 }
 
 async function getSearchArtists(query) {
   const { rows } = await pool.query(
-    "SELECT * FROM artists WHERE LOWER(name) LIKE LOWER ('%' || ($1) || '%') ORDER BY name ASC",
+    "SELECT * FROM artists WHERE LOWER(name) LIKE LOWER ('%' || ($1) || '%') ORDER BY lower(name) ASC",
     [query]
   );
   return rows;
@@ -72,13 +72,13 @@ async function getAlbumCount() {
 }
 
 async function getAllAlbums() {
-  const { rows } = await pool.query("SELECT * FROM albums ORDER BY title ASC");
+  const { rows } = await pool.query("SELECT * FROM albums ORDER BY lower(title) ASC");
   return rows;
 }
 
 async function getSearchAlbums(query) {
   const { rows } = await pool.query(
-    "SELECT * FROM albums WHERE LOWER(title) LIKE LOWER ('%' || ($1) || '%') ORDER BY title ASC",
+    "SELECT * FROM albums WHERE LOWER(title) LIKE LOWER ('%' || ($1) || '%') ORDER BY lower(title) ASC",
     [query]
   );
   return rows;
