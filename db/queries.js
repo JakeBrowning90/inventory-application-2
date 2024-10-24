@@ -8,9 +8,10 @@ async function insertUser(username, password) {
 }
 
 async function getUserByUsername(username) {
-  const { rows } = await pool.query("SELECT * FROM users WHERE username = ($1)", [
-    username,
-  ]);
+  const { rows } = await pool.query(
+    "SELECT * FROM users WHERE username = ($1)",
+    [username]
+  );
   return rows[0];
 }
 
@@ -27,7 +28,9 @@ async function getArtistCount() {
 }
 
 async function getAllArtists() {
-  const { rows } = await pool.query("SELECT * FROM artists ORDER BY lower(name) ASC");
+  const { rows } = await pool.query(
+    "SELECT * FROM artists ORDER BY lower(name) ASC"
+  );
   return rows;
 }
 
@@ -48,10 +51,12 @@ async function getArtistByID(id) {
 
 async function insertArtist(artist) {
   // console.log(artist)
-  await pool.query(
-    "INSERT INTO artists (name, activeyear, notes) VALUES ($1, $2, $3)",
+  const { rows } = await pool.query(
+    "INSERT INTO artists (name, activeyear, notes) VALUES ($1, $2, $3) RETURNING id",
     [artist.name, artist.activeyear, artist.notes]
   );
+  // Return ID for redirect
+  return rows[0].id;
 }
 
 async function updateArtist(id, artist) {
@@ -72,7 +77,9 @@ async function getAlbumCount() {
 }
 
 async function getAllAlbums() {
-  const { rows } = await pool.query("SELECT * FROM albums ORDER BY lower(title) ASC");
+  const { rows } = await pool.query(
+    "SELECT * FROM albums ORDER BY lower(title) ASC"
+  );
   return rows;
 }
 
@@ -127,6 +134,8 @@ async function insertAlbum(album) {
       [rows[0].id, album.artist]
     );
   }
+  // Return ID for redirect
+  return rows[0].id;
 }
 
 async function updateAlbum(id, album) {

@@ -77,9 +77,9 @@ exports.postAlbumForm = [
         errors: errors.array(),
       });
     }
-    await db.insertAlbum(album);
-    //TODO: redirect to newly created album
-    res.redirect("/");
+    const newID = await db.insertAlbum(album);
+    // Redirect to newly created album
+    res.redirect(`/albums/${newID}/detail`);
   }),
 ];
 
