@@ -6,10 +6,11 @@
     <%- include('partials/header')%>
 
     <main>
+      <a href="<%= locals.backLink %>"><img src="/imgs/back.svg"/></a>
+
       <h1><%= title %></h1>
-      <a href="<%= locals.backLink %>"><%= locals.backText %></a>
       <%- include('partials/errors')%>
-      <form method="POST">
+      <form class="pageForm" method="POST">
         <label for="name">Artist/Group name:</label>
         <input type="text" name="name" minlength="1" maxlength="60" value="<%= (locals.artist) ? artist.name : '' %>" />
         <label for="activeyear">First year active:</label>

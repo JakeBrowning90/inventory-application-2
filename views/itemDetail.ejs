@@ -6,64 +6,79 @@
 
     <main class="detailMain">
       <div class="detailNav">
-        <a href="/">Home</a>
+        <a href="/"><img src="/imgs/back.svg" /></a>
         <div>
           <% if (locals.artist) { %>
-          <a href="/artists/<%= artist.id %>/update">Update Artist</a>
-          <a href="/artists/<%= artist.id %>/delete">Delete Artist</a>
+          <a href="/artists/<%= artist.id %>/update"
+            ><img src="/imgs/edit.svg"
+          /></a>
+          <a href="/artists/<%= artist.id %>/delete"
+            ><img src="/imgs/delete.svg"
+          /></a>
           <% } %> <% if (locals.album) { %>
-          <a href="/albums/<%= album.id %>/update">Update Album</a>
-          <a href="/albums/<%= album.id %>/delete">Delete Album</a>
+          <a href="/albums/<%= album.id %>/update"
+            ><img src="/imgs/edit.svg"
+          /></a>
+          <a href="/albums/<%= album.id %>/delete"
+            ><img src="/imgs/delete.svg"
+          /></a>
           <% } %>
         </div>
       </div>
-
       <% if (locals.artist) { %>
+      <div class="detailBio">
+        <img src="/imgs/personicon.png" class="entryImg detailImg artistImg" />
 
-      <img src="/imgs/personicon.png" class="entryImg detailImg artistImg" />
+        <div class="detailHeadline">
+          <h1><%= artist.name %></h1>
+          <p>Debut: <%= artist.activeyear %></p>
+        </div>
 
-      <div class="detailHeadline">
-        <p><%= artist.name %></p>
-        <p>Debut: <%= artist.activeyear %></p>
+        <p class="detailNotes"><%= artist.notes %></p>
       </div>
+      <div class="detailListSection">
+        <p class="detailListHeading">Albums:</p>
+        <ul class="detailUL">
+          <% if (locals.albumList) { %> <% albumList.forEach((album) => {%>
 
-      <p class="detailNotes"><%= artist.notes %></p>
-      <p class="detailListHeading">Albums:</p>
-      <ul class="detailUL">
-        <% if (locals.albumList) { %> <% albumList.forEach((album) => {%>
-
-        <li>
-          <a href="/albums/<%= album.id %>/detail">
-            <img src="/imgs/musicnote.png" class="entryImg detailThumbnail"/>
-            <%= album.title %></a
-          >
-        </li>
-        <% }) %> <% } %>
-      </ul>
+          <li>
+            <a href="/albums/<%= album.id %>/detail">
+              <img src="/imgs/musicnote.png" class="entryImg detailThumbnail" />
+              <%= album.title %></a
+            >
+          </li>
+          <% }) %> <% } %>
+        </ul>
+      </div>
 
       <% } %> <% if (locals.album) { %>
-
+      <div class="detailBio">
         <img src="/imgs/musicnote.png" class="entryImg detailImg" />
 
-      <div class="detailHeadline">
-        <p><%= album.title %></p>
-        <p>Release: <%= album.year %></p>
+        <div class="detailHeadline">
+          <h1><%= album.title %></h1>
+          <p>Release: <%= album.year %></p>
+        </div>
+
+        <p class="detailNotes"><%= album.notes %></p>
       </div>
+      <div class="detailListSection">
+        <p class="detailListHeading">Artist(s):</p>
+        <ul class="detailUL">
+          <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
 
-      <p class="detailNotes"><%= album.notes %></p>
-      <p class="detailListHeading">Artist(s):</p>
-      <ul class="detailUL">
-        <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
-
-        <li>
-          <a href="/artists/<%= artist.id %>/detail">
-            <img src="/imgs/personicon.png" class="entryImg detailThumbnail artistImg" />
-            <%= artist.name %></a
-          >
-        </li>
-        <% }) %> <% } %>
-      </ul>
-
+          <li>
+            <a href="/artists/<%= artist.id %>/detail">
+              <img
+                src="/imgs/personicon.png"
+                class="entryImg detailThumbnail artistImg"
+              />
+              <%= artist.name %></a
+            >
+          </li>
+          <% }) %> <% } %>
+        </ul>
+      </div>
       <% } %>
     </main>
     <!-- <%- include('partials/footer')%> -->

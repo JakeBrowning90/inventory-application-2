@@ -71,7 +71,8 @@ exports.postArtistForm = [
       });
     }
     await db.insertArtist(artist);
-    res.redirect("/artists");
+    // TODO: Redirect to new Artist entry
+    res.redirect("/");
   }),
 ];
 
@@ -124,6 +125,6 @@ exports.getArtistDelete = asyncHandler(async (req, res) => {
 exports.postArtistDelete = [
   asyncHandler(async (req, res) => {
     await db.deleteArtist(req.params.id);
-    res.redirect("/artists");
+    res.redirect("/");
   }),
 ];

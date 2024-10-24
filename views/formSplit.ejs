@@ -4,9 +4,15 @@
   <body>
     <%- include('partials/header')%>
     <main>
-        <a href="/">Home</a>
-        <a href="/artists/new">Add new Artist</a>
-        <a href="/albums/new">Add new Album</a>
+      <a href="/"><img src="/imgs/back.svg" /></a>
+      <div class="formSplitDiv">
+        <a href="/artists/new">
+          <div class="formSplitButton">Add new Artist</div>
+        </a>
+        <a href="/albums/new">
+          <div class="formSplitButton">Add new Album</div>
+        </a>
+      </div>
     </main>
     <%- include('partials/footer')%>
   </body>

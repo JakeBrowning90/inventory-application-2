@@ -4,11 +4,9 @@
   <body>
     <%- include('partials/header')%>
     <main>
+      <a href="/artists/<%= artist.id %>/detail"><img src="/imgs/back.svg"/></a>
       <h1><%= title %></h1>
-      <a href="/artists/<%= artist.id %>/detail">Back to Artist</a>
-      <p><%= artist.name %></p>
-      <p>First active: <%= artist.activeyear %></p>
-      <p><%= artist.notes %></p>
+
       <% if (albumList.length !== 0) { %>
       <h2>Warning: please update or delete the albums shown to continue.</h2>
       <p>Albums:</p>
@@ -21,6 +19,10 @@
       <h2>
         No albums in database. Are you sure you want to delete this artist?
       </h2>
+
+      <h1><%= artist.name %></h1>
+      <p>First active: <%= artist.activeyear %></p>
+      <p><%= artist.notes %></p>
       <form method="POST"><button>Delete</button></form>
       <% } %>
     </main>

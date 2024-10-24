@@ -22,8 +22,40 @@ body {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 2px;
-  gap: 2px;
+  /* padding: 2px;
+  gap: 2px; */
+}
+
+button,
+input,
+select,
+option,
+textarea {
+  color: black;
+}
+
+input,
+select,
+textarea {
+  width: 90%;
+  resize: none;
+}
+
+textarea {
+  height: 100px;
+}
+
+.pageForm {
+  background-color: rgba(23, 0, 128, 0.531);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pageForm > * {
+  margin: auto;
 }
 
 header,
@@ -31,8 +63,6 @@ footer {
   background-color: rgb(42, 42, 42);
   padding: 2px;
 }
-
-
 
 nav,
 footer {
@@ -48,6 +78,7 @@ main {
     rgba(0, 0, 0, 1) 100%
   );
   flex-grow: 1;
+  padding: 5px;
 }
 
 img {
@@ -63,7 +94,7 @@ img {
   display: grid;
   height: 60%;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40px 1fr 6fr;
+  grid-template-rows: 45px 1fr 6fr;
 }
 
 .indexMain > * {
@@ -71,10 +102,14 @@ img {
 
 .indexToolbar {
   margin: 2px;
-  background-color: rgb(65, 105, 13);
+  /* background-color: rgb(65, 105, 13); */
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
+}
+
+.indexToolbar > * {
+  margin: auto;
 }
 
 li > a {
@@ -114,27 +149,37 @@ li > a {
 
 .detailMain {
   display: grid;
-  height: 40%;
-  grid-template-rows: 20px 2fr 50px 1fr 20px 1fr;
+  height: 90%;
+  grid-template-rows: 30px 1fr 170px;
+}
+
+.detailNav,
+.detailHeadline,
+.detailNotes,
+.detailListHeading {
+  /* margin: 0 10px; */
+  padding: 5px;
 }
 
 .detailNav {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(65, 105, 13);
+  /* background-color: rgb(65, 105, 13); */
+}
+
+.detailBio {
+  overflow: auto;
 }
 
 .detailImg {
   width: 80%;
 }
 
-.detailHeadline {
-  background-color: rgb(65, 105, 13);
+.detailHeadline, .detailListHeading  {
+  background-color: rgba(110, 110, 110, 0.368);
+  border-radius: 10px;
 }
 
-.detailListHeading {
-  background-color: rgb(65, 105, 13);
-}
 .detailNotes {
   overflow: auto;
 }
@@ -170,4 +215,32 @@ li > * {
 
 .artistImg {
   border-radius: 50%;
+}
+
+.formSplitDiv {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.formSplitDiv > a {
+  height: 45%;
+}
+
+.formSplitButton {
+  background-color: rgb(164, 83, 175);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+.formSplitButton:hover {
+  background-color: rgb(168, 95, 177);
+
 }

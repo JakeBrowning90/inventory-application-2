@@ -78,7 +78,8 @@ exports.postAlbumForm = [
       });
     }
     await db.insertAlbum(album);
-    res.redirect("/albums");
+    //TODO: redirect to newly created album
+    res.redirect("/");
   }),
 ];
 
@@ -136,6 +137,6 @@ exports.getAlbumDelete = asyncHandler(async (req, res) => {
 exports.postAlbumDelete = [
   asyncHandler(async (req, res) => {
     await db.deleteAlbum(req.params.id);
-    res.redirect("/albums");
+    res.redirect("/");
   }),
 ];

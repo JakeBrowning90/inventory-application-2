@@ -4,10 +4,12 @@
   <body>
     <%- include('partials/header')%>
     <main>
+   
+      <a href="/albums/<%= album.id %>/detail"><img src="/imgs/back.svg"/></a>
       <h1><%= title %></h1>
-      <a href="/albums/<%= album.id %>/detail">Back to Album</a>
       <h2>Are you sure you want to delete this album?</h2>
-      <p><%= album.title %></p>
+      <h1><%= album.title %></h1>
+      <p>Release year: <%= album.year %></p>
       <p>Artist(s):</p>
       <ul>
         <% if (locals.artistList) { %> <% artistList.forEach((artist) => {%>
@@ -17,7 +19,7 @@
         </li>
         <% }) %> <% } %>
       </ul>
-      <p>Release year: <%= album.year %></p>
+      
       <p><%= album.notes %></p>
       <form method="POST"><button>Delete</button></form>
     </main>
