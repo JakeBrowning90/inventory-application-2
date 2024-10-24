@@ -258,3 +258,14 @@ li > * {
 .formSplitButton:hover {
   background-color: rgb(168, 95, 177);
 }
+
+.aboutBody {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  gap: 5px;
+}
+
+.aboutBody > a {
+  text-decoration: underline;
+}

@@ -10,7 +10,7 @@ router.get("/", indexController.getIndex);
 router.get("/search", indexController.getSearch);
 
 // GET tutorial page
-router.get("/tutorial", indexController.getTutorial);
+router.get("/about", indexController.getAbout);
 
 // GET new entry option page
 router.get("/new", indexController.getNew);

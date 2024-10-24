@@ -103,8 +103,8 @@ exports.getNew = asyncHandler(async (req, res) => {
   } else res.redirect("/login");
 });
 
-exports.getTutorial = asyncHandler(async (req, res) => {
-  res.render("tutorial", { title: "App info" });
+exports.getAbout = asyncHandler(async (req, res) => {
+  res.render("about", { title: "App info" });
 });
 
 exports.getLogin = asyncHandler(async (req, res) => {
