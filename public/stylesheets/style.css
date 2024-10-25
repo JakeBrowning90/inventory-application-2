@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100vh;
+  height: 100%;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -15,16 +15,17 @@ body {
 
 a {
   text-decoration: none;
+  text-overflow: ellipsis;
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  /* height: 95%; */
+  /* background-color: rgb(81, 229, 255); */
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  /* padding: 2px;
-  gap: 2px; */
 }
 
 button,
@@ -151,7 +152,7 @@ li > a {
 .detailMain {
   display: grid;
   height: 90%;
-  grid-template-rows: 30px 1fr 170px;
+  grid-template-rows: 30px 2fr 180px;
 }
 
 .detailNav,
@@ -187,12 +188,9 @@ li > a {
 }
 
 .detailUL {
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* overflow: auto; */
-  /* gap: 20px; */
-  width: 120px;
-  height: 375px;
+  /* background-color: rgb(232, 59, 88); */
+  width: 150px;
+  height: 300px;
   padding-top: 200px;
   overflow-y: auto;
   overflow-x: auto;
@@ -201,7 +199,8 @@ li > a {
 }
 
 .detailUL > * {
-  width: 120px;
+  width: 150px;
+  height: 150px;
   transform: rotate(90deg);
   transform-origin: right top;
 }
