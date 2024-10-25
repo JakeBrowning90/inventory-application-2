@@ -44,8 +44,8 @@
           <li>
             <a href="/albums/<%= album.id %>/detail">
               <img src="/imgs/musicnote.png" class="entryImg detailThumbnail" />
-              <%= album.title %></a
-            >
+              <div class="tnLabel"><%= album.title %></div>
+            </a>
           </li>
           <% }) %> <% } %>
         </ul>
@@ -73,8 +73,8 @@
                 src="/imgs/personicon.png"
                 class="entryImg detailThumbnail artistImg"
               />
-              <%= artist.name %></a
-            >
+              <div class="tnLabel"><%= artist.name %></div>
+            </a>
           </li>
           <% }) %> <% } %>
         </ul>
