@@ -35,7 +35,7 @@
           <% if (locals.albumList) { %> <% albumList.forEach((album) => { %>
           <li>
             <a href="albums/<%= album.id %>/detail">
-              <img src="/imgs/musicnote.png" class="entryImg indexThumbnail "/>
+              <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg indexThumbnail "/>
               <p><%= album.title %></p>
             </a>
           </li>
