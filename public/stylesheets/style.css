@@ -89,6 +89,7 @@ main {
 
 img {
   aspect-ratio: 1 / 1;
+  object-fit: cover;
   /* background-color: rgb(217, 217, 237); */
 }
 

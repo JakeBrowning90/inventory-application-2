@@ -50,7 +50,7 @@
           <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
           <li>
             <a href="artists/<%= artist.id %>/detail">
-              <img src="/imgs/personicon.png" class="entryImg indexThumbnail artistImg"/>
+              <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg indexThumbnail artistImg"/>
               <p><%= artist.name %></p>
             </a>
           </li>

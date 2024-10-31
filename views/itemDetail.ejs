@@ -27,7 +27,7 @@
       </div>
       <% if (locals.artist) { %>
       <div class="detailBio">
-        <img src="/imgs/personicon.png" class="entryImg detailImg artistImg" />
+        <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg detailImg artistImg" />
 
         <div class="detailHeadline">
           <h1><%= artist.name %></h1>
