@@ -60,6 +60,10 @@ textarea {
   margin: auto;
 }
 
+.imgInput {
+  color: white;
+}
+
 header,
 footer {
   background-color: rgb(42, 42, 42);

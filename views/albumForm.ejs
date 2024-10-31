@@ -6,7 +6,7 @@
     <%- include('partials/header')%>
 
     <main>
-      <a href="<%= locals.backLink %>"><img src="/imgs/back.svg"/></a>
+      <a href="<%= locals.backLink %>"><img src="/imgs/back.svg" /></a>
       <h1><%= title %></h1>
 
       <%- include('partials/errors')%>
@@ -19,7 +19,6 @@
           minlength="1"
           maxlength="60"
           value="<%= (locals.album) ? album.title : '' %>"
-          
         />
         <label for="artist">Artist(s):</label>
         <select name="artist" multiple>
@@ -34,12 +33,11 @@
           min="1800"
           max="2100"
           value="<%= (locals.album) ? album.year : '' %>"
-          
         />
+        <label for="">Album art:</label>
+        <input class="imgInput" type="file" name="albumImg" />
         <label for="notes">Notes:</label>
-        <textarea name="notes" minlength="1" maxlength="1000" >
-<%= (locals.album) ? album.notes : '' %></textarea
-        >
+        <textarea name="notes" minlength="1" maxlength="1000"><%= (locals.album) ? album.notes : '' %></textarea>
         <button>Submit</button>
       </form>
     </main>
