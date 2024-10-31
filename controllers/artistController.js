@@ -70,10 +70,20 @@ exports.postArtistForm = [
         errors: errors.array(),
       });
     }
+
+    // TEST FOR IMAGE UPLOAD, DON'T INSERT
+    console.log(req.body);
+    res.render("artistForm", {
+      title: "New Artist / Group",
+      backLink: "/",
+      backText: "Back",
+    });
+
+    // FINAL INSERT AND REDIRECT
     // Insert new artist to DB
-    const newID = await db.insertArtist(artist);
+    // const newID = await db.insertArtist(artist);
     // Redirect to new Artist entry
-    res.redirect(`/artists/${newID}/detail`);
+    // res.redirect(`/artists/${newID}/detail`);
   }),
 ];
 
