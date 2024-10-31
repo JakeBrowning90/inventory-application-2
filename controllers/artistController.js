@@ -70,6 +70,7 @@ exports.postArtistForm = [
         errors: errors.array(),
       });
     }
+    // Insert new artist to DB
     const newID = await db.insertArtist(artist);
     // Redirect to new Artist entry
     res.redirect(`/artists/${newID}/detail`);
