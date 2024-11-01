@@ -34,5 +34,5 @@ Further down the line, I'd like to incorporate social media elements into the ap
 ## Credits
 Icons sourced from Google Fonts.
 Example Artist and Album information from Wikipedia.
-UI assistance from https://goodwinart.myportfolio.com/ 
+UI assistance from https://goodwinart.myportfolio.com/ and https://github.com/jlduchaney
 

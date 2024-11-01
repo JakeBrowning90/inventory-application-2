@@ -36,7 +36,7 @@
           <li>
             <a href="albums/<%= album.id %>/detail">
               <div class="imgBacking indexTnBacking">
-                <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg indexThumbnail "/>
+                <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg"/>
 
               </div>
               <p><%= album.title %></p>
@@ -54,7 +54,7 @@
           <li>
             <a href="artists/<%= artist.id %>/detail">
               <div class="imgBacking indexTnBacking artistBacking">
-                <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg indexThumbnail artistImg"/>
+                <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg artistImg"/>
 
               </div>
               <p><%= artist.name %></p>
