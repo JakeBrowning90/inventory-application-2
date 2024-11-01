@@ -64,6 +64,8 @@ exports.postAlbumForm = [
   validateForm,
   asyncHandler(async (req, res) => {
     const album = req.body;
+    album.image = res.locals.result.url;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Show form again with error messages
@@ -102,6 +104,8 @@ exports.postAlbumUpdate = [
   validateForm,
   asyncHandler(async (req, res) => {
     const album = req.body;
+    album.image = res.locals.result.url;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Show form again with error messages

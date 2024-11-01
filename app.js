@@ -19,7 +19,6 @@ const albumRouter = require("./routes/album");
 const app = express();
 
 const storage = multer.memoryStorage();
-// const upload = multer({ storage: storage });
 const upload = multer();
 
 cloudinary.config({
@@ -28,7 +27,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.post("/artists/new", upload.single("image"), async (req, res, next) => {
+app.post(["/artists/new", "/artists/:id/update", "/albums/new", "/albums/:id/update"], upload.single("image"), async (req, res, next) => {
   let streamUpload = (req) => {
     return new Promise((resolve, reject) => {
       let stream = cloudinary.uploader.upload_stream((error, result) => {
@@ -45,11 +44,11 @@ app.post("/artists/new", upload.single("image"), async (req, res, next) => {
 
   async function upload(req) {
     let result = await streamUpload(req);
-    console.log(result);
+    // console.log(result);
     res.locals.result = result
 
   }
-  upload(req);
+  await upload(req);
   next();
 });
 

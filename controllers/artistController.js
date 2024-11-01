@@ -58,8 +58,9 @@ exports.getArtistForm = asyncHandler(async (req, res) => {
 exports.postArtistForm = [
   validateForm,
   asyncHandler(async (req, res) => {
-    // TEST FOR IMAGE UPLOAD, DON'T INSERT
     const artist = req.body;
+    artist.image = res.locals.result.url;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Show form with error messages
@@ -72,23 +73,10 @@ exports.postArtistForm = [
       });
     }
 
-    // TEST FOR IMAGE UPLOAD, DON'T INSERT
-    console.log(req.body);
-    console.log(req.file);
-    console.log(res.locals);
-
-
-    res.render("artistForm", {
-      title: "New Artist / Group",
-      backLink: "/",
-      backText: "Back",
-    });
-
-    // FINAL INSERT AND REDIRECT
     // Insert new artist to DB
-    // const newID = await db.insertArtist(artist);
+    const newID = await db.insertArtist(artist);
     // Redirect to new Artist entry
-    // res.redirect(`/artists/${newID}/detail`);
+    res.redirect(`/artists/${newID}/detail`);
   }),
 ];
 
@@ -108,6 +96,8 @@ exports.postArtistUpdate = [
   validateForm,
   asyncHandler(async (req, res) => {
     const artist = req.body;
+    artist.image = res.locals.result.url;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Show form with error messages

@@ -11,7 +11,7 @@
 
       <%- include('partials/errors')%>
 
-      <form class="pageForm" method="POST">
+      <form class="pageForm" method="POST" enctype="multipart/form-data">
         <label for="title">Album title:</label>
         <input
           type="text"
@@ -37,7 +37,9 @@
         <label for="">Album art:</label>
         <input class="imgInput" type="file" name="image" />
         <label for="notes">Notes:</label>
-        <textarea name="notes" minlength="1" maxlength="1000"><%= (locals.album) ? album.notes : '' %></textarea>
+        <textarea name="notes" minlength="1" maxlength="1000">
+<%= (locals.album) ? album.notes : '' %></textarea
+        >
         <button>Submit</button>
       </form>
     </main>

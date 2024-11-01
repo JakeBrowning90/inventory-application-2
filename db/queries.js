@@ -52,8 +52,8 @@ async function getArtistByID(id) {
 async function insertArtist(artist) {
   // console.log(artist)
   const { rows } = await pool.query(
-    "INSERT INTO artists (name, activeyear, notes) VALUES ($1, $2, $3) RETURNING id",
-    [artist.name, artist.activeyear, artist.notes]
+    "INSERT INTO artists (name, activeyear, notes, image) VALUES ($1, $2, $3, $4) RETURNING id",
+    [artist.name, artist.activeyear, artist.notes, artist.image]
   );
   // Return ID for redirect
   return rows[0].id;
@@ -61,8 +61,8 @@ async function insertArtist(artist) {
 
 async function updateArtist(id, artist) {
   await pool.query(
-    "UPDATE artists SET name = ($1), activeyear = ($2), notes = ($3) WHERE id = ($4)",
-    [artist.name, artist.activeyear, artist.notes, id]
+    "UPDATE artists SET name = ($1), activeyear = ($2), notes = ($3), image = ($4) WHERE id = ($5)",
+    [artist.name, artist.activeyear, artist.notes, artist.image, id]
   );
 }
 
@@ -117,8 +117,8 @@ async function getArtistsByAlbum(album_id) {
 async function insertAlbum(album) {
   // Insert album into table, get new ID
   const { rows } = await pool.query(
-    "INSERT INTO albums (title, year, notes) VALUES ($1, $2, $3) RETURNING id",
-    [album.title, album.year, album.notes]
+    "INSERT INTO albums (title, year, notes, image) VALUES ($1, $2, $3, $4) RETURNING id",
+    [album.title, album.year, album.notes, album.image]
   );
   // Insert albumid and artistid(s) into credits table
   if (Array.isArray(album.artist)) {
@@ -140,8 +140,8 @@ async function insertAlbum(album) {
 
 async function updateAlbum(id, album) {
   await pool.query(
-    "UPDATE albums SET title = ($1), year = ($2), notes = ($3) WHERE id = ($4)",
-    [album.title, album.year, album.notes, id]
+    "UPDATE albums SET title = ($1), year = ($2), notes = ($3), image = ($4) WHERE id = ($5)",
+    [album.title, album.year, album.notes, album.image, id]
   );
   // Clear existing credits from credits table
   await pool.query("DELETE FROM album_credits WHERE album_id = ($1)", [id]);
