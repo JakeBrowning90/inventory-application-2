@@ -57,11 +57,6 @@ exports.getIndex = asyncHandler(async (req, res) => {
   }
   let albumCount = albumList.length;
 
-  // const artistCount = await db.getArtistCount();
-  // const artistList = await db.getAllArtists();
-  // const albumCount = await db.getAlbumCount();
-  // const albumList = await db.getAllAlbums();
-
   res.render("index", {
     title: "Homepage",
     query: query,
@@ -69,31 +64,6 @@ exports.getIndex = asyncHandler(async (req, res) => {
     artistList: artistList,
     albumCount: albumCount,
     albumList: albumList,
-  });
-});
-
-exports.getSearch = asyncHandler(async (req, res) => {
-  const query = req.query.searchValue;
-
-  //Get artists
-  let artists;
-  if (query) {
-    artists = await db.getSearchArtists(query);
-  } else {
-    artists = await db.getAllArtists();
-  }
-  //Get albums
-  let albums;
-  if (query) {
-    albums = await db.getSearchAlbums(query);
-  } else {
-    albums = await db.getAllAlbums();
-  }
-  res.render("searchResult", {
-    title: "Search result",
-    query: query,
-    artists: artists,
-    albums: albums,
   });
 });
 

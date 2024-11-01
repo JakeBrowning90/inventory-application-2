@@ -20,21 +20,21 @@ const validateForm = [
     .withMessage("Notes must contain between 1 and 1000 characters."),
 ];
 
-exports.getAlbums = asyncHandler(async (req, res) => {
-  // Get all albums or by query match
-  const query = req.query.searchValue;
-  let albums;
-  if (query) {
-    albums = await db.getSearchAlbums(query);
-  } else {
-    albums = await db.getAllAlbums();
-  }
-  res.render("albumList", {
-    title: "Album Search",
-    albums: albums,
-    query: query,
-  });
-});
+// exports.getAlbums = asyncHandler(async (req, res) => {
+//   // Get all albums or by query match
+//   const query = req.query.searchValue;
+//   let albums;
+//   if (query) {
+//     albums = await db.getSearchAlbums(query);
+//   } else {
+//     albums = await db.getAllAlbums();
+//   }
+//   res.render("albumList", {
+//     title: "Album Search",
+//     albums: albums,
+//     query: query,
+//   });
+// });
 
 exports.getAlbumDetail = asyncHandler(async (req, res) => {
   // Get album
@@ -55,7 +55,6 @@ exports.getAlbumForm = asyncHandler(async (req, res) => {
       title: "New Album",
       artists: artists,
       backLink: "/new",
-      backText: "Back",
     });
   } else res.redirect("/login");
 });
@@ -74,8 +73,7 @@ exports.postAlbumForm = [
         title: "New Album",
         album: album,
         artists: artists,
-        backLink: "/albums",
-        backText: "Back to Albums",
+        backLink: "/new",
         errors: errors.array(),
       });
     }
@@ -95,7 +93,6 @@ exports.getAlbumUpdate = asyncHandler(async (req, res) => {
       album: album,
       artists: artists,
       backLink: `/albums/${req.params.id}/detail`,
-      backText: "Back to Album Detail",
     });
   } else res.redirect("/login");
 });
@@ -115,7 +112,6 @@ exports.postAlbumUpdate = [
         album: album,
         artists: artists,
         backLink: `/albums/${req.params.id}/detail`,
-        backText: "Back to Album Detail",
         errors: errors.array(),
       });
     }

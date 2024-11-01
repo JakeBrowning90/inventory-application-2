@@ -17,21 +17,21 @@ const validateForm = [
     .withMessage("Notes must contain between 1 and 1000 characters."),
 ];
 
-exports.getArtists = asyncHandler(async (req, res) => {
-  const query = req.query.searchValue;
-  // Get all artists or by query match
-  let artists;
-  if (query) {
-    artists = await db.getSearchArtists(query);
-  } else {
-    artists = await db.getAllArtists();
-  }
-  res.render("artistList", {
-    title: "Artist Search",
-    artists: artists,
-    query: query,
-  });
-});
+// exports.getArtists = asyncHandler(async (req, res) => {
+//   const query = req.query.searchValue;
+//   // Get all artists or by query match
+//   let artists;
+//   if (query) {
+//     artists = await db.getSearchArtists(query);
+//   } else {
+//     artists = await db.getAllArtists();
+//   }
+//   res.render("artistList", {
+//     title: "Artist Search",
+//     artists: artists,
+//     query: query,
+//   });
+// });
 
 exports.getArtistDetail = asyncHandler(async (req, res) => {
   // Get artist
@@ -49,8 +49,7 @@ exports.getArtistForm = asyncHandler(async (req, res) => {
   if (req.user) {
     res.render("artistForm", {
       title: "New Artist / Group",
-      backLink: "/",
-      backText: "Back",
+      backLink: "/new",
     });
   } else res.redirect("/login");
 });
@@ -67,12 +66,10 @@ exports.postArtistForm = [
       return res.status(400).render("artistForm", {
         title: "New Artist / Group",
         artist: artist,
-        backLink: "/",
-        backText: "Back",
+        backLink: "/new",
         errors: errors.array(),
       });
     }
-
     // Insert new artist to DB
     const newID = await db.insertArtist(artist);
     // Redirect to new Artist entry
@@ -87,7 +84,6 @@ exports.getArtistUpdate = asyncHandler(async (req, res) => {
       title: "Update Artist / Group",
       artist: artist,
       backLink: `/artists/${req.params.id}/detail`,
-      backText: "Back to Artist Detail",
     });
   } else res.redirect("/login");
 });
@@ -105,7 +101,6 @@ exports.postArtistUpdate = [
         title: "Update Artist / Group",
         artist: artist,
         backLink: `/artists/${req.params.id}/detail`,
-        backText: "Back to Artist Detail",
         errors: errors.array(),
       });
     }

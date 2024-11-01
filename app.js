@@ -9,16 +9,12 @@ const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 const streamifier = require("streamifier");
 
-
-
 //Routers
 const indexRouter = require("./routes/index");
 const artistRouter = require("./routes/artist");
 const albumRouter = require("./routes/album");
 
 const app = express();
-
-const storage = multer.memoryStorage();
 const upload = multer();
 
 cloudinary.config({
@@ -27,30 +23,33 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.post(["/artists/new", "/artists/:id/update", "/albums/new", "/albums/:id/update"], upload.single("image"), async (req, res, next) => {
-  let streamUpload = (req) => {
-    return new Promise((resolve, reject) => {
-      let stream = cloudinary.uploader.upload_stream((error, result) => {
-        if (result) {
-          resolve(result);
-        } else {
-          reject(error);
-        }
+// Upload images from memory to Cloudinary on form submit
+app.post(
+  ["/artists/new", "/artists/:id/update", "/albums/new", "/albums/:id/update"],
+  upload.single("image"),
+  async (req, res, next) => {
+    let streamUpload = (req) => {
+      return new Promise((resolve, reject) => {
+        let stream = cloudinary.uploader.upload_stream((error, result) => {
+          if (result) {
+            resolve(result);
+          } else {
+            reject(error);
+          }
+        });
+
+        streamifier.createReadStream(req.file.buffer).pipe(stream);
       });
+    };
 
-      streamifier.createReadStream(req.file.buffer).pipe(stream);
-    });
-  };
-
-  async function upload(req) {
-    let result = await streamUpload(req);
-    // console.log(result);
-    res.locals.result = result
-
+    async function upload(req) {
+      let result = await streamUpload(req);
+      res.locals.result = result;
+    }
+    await upload(req);
+    next();
   }
-  await upload(req);
-  next();
-});
+);
 
 const path = require("node:path");
 
@@ -60,23 +59,6 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
-// TEST: LOCAL IMG
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, path.join(__dirname, 'public/uploads/')
-// )},
-//   filename: (req, file, cb) => {
-//     return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
-//   },
-// });
-
-// function uploadFiles(req, res, next) {
-  // console.log(req.body);
-  // console.log(req.files);
-  // res.json({ message: "Successfully uploaded files" });
-//   next();
-// }
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
