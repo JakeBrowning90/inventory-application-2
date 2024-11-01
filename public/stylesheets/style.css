@@ -19,8 +19,6 @@ a {
 }
 
 body {
-  /* height: 95%; */
-  /* background-color: rgb(81, 229, 255); */
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -48,7 +46,7 @@ textarea {
 }
 
 .pageForm {
-  background-color: rgba(23, 0, 128, 0.531);
+  background-color: rgba(0, 0, 0, 0.50);
   margin: 10px;
   padding: 10px;
   display: flex;
@@ -77,24 +75,26 @@ footer {
 }
 
 main {
-  background: rgb(98, 98, 98);
+  /* background: rgb(98, 98, 98);
   background: linear-gradient(
     180deg,
     rgba(98, 98, 98, 1) 0%,
     rgba(0, 0, 0, 1) 100%
+  ); */
+  background: rgb(13, 13, 184);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 184, 1) 0%,
+    rgba(0, 0, 0, 1) 66%
   );
+
   flex-grow: 1;
   padding: 5px;
 }
 
-img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  /* background-color: rgb(217, 217, 237); */
-}
-
 .entryImg {
   background-color: rgb(217, 217, 237);
+  width: 95%;
 }
 
 .indexMain {
@@ -151,7 +151,7 @@ li > a {
 .resultColumn > * {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .detailMain {
@@ -176,10 +176,6 @@ li > a {
 
 .detailBio {
   overflow: auto;
-}
-
-.detailImg {
-  width: 80%;
 }
 
 .detailHeadline,
@@ -226,7 +222,7 @@ li > * {
 .tnLabel {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
 
   overflow: hidden;
   hyphens: auto;
@@ -235,19 +231,41 @@ li > * {
   /* background-color: rgb(232, 56, 86); */
   height: 35px;
   width: 140px;
-
 }
 
-.indexThumbnail {
+img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  /* background-color: rgb(217, 217, 237); */
+}
+
+.imgBacking {
+  aspect-ratio: 1/1;
+  background: rgb(184, 216, 168);
+  background: linear-gradient(
+    0deg,
+    rgba(184, 216, 168, 1) 0%,
+    rgba(253, 140, 241, 1) 66%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailImgBacking {
+  width: 80%;
+}
+
+.indexTnBacking {
   width: 75%;
 }
 
-.detailThumbnail {
-  /* height: 70%; */
+.detailThumbnailBacking {
   max-height: 110px;
 }
 
-.artistImg {
+.artistImg,
+.artistBacking {
   border-radius: 50%;
 }
 

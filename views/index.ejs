@@ -35,7 +35,10 @@
           <% if (locals.albumList) { %> <% albumList.forEach((album) => { %>
           <li>
             <a href="albums/<%= album.id %>/detail">
-              <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg indexThumbnail "/>
+              <div class="imgBacking indexTnBacking">
+                <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg indexThumbnail "/>
+
+              </div>
               <p><%= album.title %></p>
             </a>
           </li>
@@ -50,7 +53,10 @@
           <% if (locals.artistList) { %> <% artistList.forEach((artist) => { %>
           <li>
             <a href="artists/<%= artist.id %>/detail">
-              <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg indexThumbnail artistImg"/>
+              <div class="imgBacking indexTnBacking artistBacking">
+                <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg indexThumbnail artistImg"/>
+
+              </div>
               <p><%= artist.name %></p>
             </a>
           </li>
