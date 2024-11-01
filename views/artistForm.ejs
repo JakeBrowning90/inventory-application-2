@@ -10,13 +10,13 @@
 
       <h1><%= title %></h1>
       <%- include('partials/errors')%>
-      <form class="pageForm" method="POST">
+      <form class="pageForm" method="POST" enctype="multipart/form-data">
         <label for="name">Artist/Group name:</label>
         <input type="text" name="name" minlength="1" maxlength="60" value="<%= (locals.artist) ? artist.name : '' %>" />
         <label for="activeyear">First year active:</label>
         <input type="number" name="activeyear" min="1800" max="2100" value="<%= (locals.artist) ? artist.activeyear : '' %>" />
         <label for="">Artist picture:</label>
-        <input class="imgInput" type="file" name="artistImg">
+        <input class="imgInput" type="file" name="image">
         <label for="notes">Notes:</label>
         <textarea name="notes"  minlength="1" maxlength="1000"><%= (locals.artist) ? artist.notes : '' %></textarea> 
         <button>Submit</button>

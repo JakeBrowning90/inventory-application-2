@@ -27,8 +27,12 @@
       </div>
       <% if (locals.artist) { %>
       <div class="detailBio">
-        <img src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>" class="entryImg detailImg artistImg" />
+        <img
+          src="<%= (artist.image) ? artist.image : '/imgs/personicon.png' %>"
+          class="entryImg detailImg artistImg"
+        />
 
+        <!-- <img src="/uploads/image_1730424350214.jpg" class="entryImg detailImg artistImg" /> -->
         <div class="detailHeadline">
           <h1><%= artist.name %></h1>
           <p>Debut: <%= artist.activeyear %></p>
@@ -43,7 +47,10 @@
 
           <li>
             <a href="/albums/<%= album.id %>/detail">
-              <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg detailThumbnail" />
+              <img
+                src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>"
+                class="entryImg detailThumbnail"
+              />
               <div class="tnLabel"><%= album.title %></div>
             </a>
           </li>
@@ -53,7 +60,10 @@
 
       <% } %> <% if (locals.album) { %>
       <div class="detailBio">
-        <img src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>" class="entryImg detailImg" />
+        <img
+          src="<%= (album.image) ? album.image : '/imgs/musicnote.png' %>"
+          class="entryImg detailImg"
+        />
 
         <div class="detailHeadline">
           <h1><%= album.title %></h1>

@@ -58,6 +58,7 @@ exports.getArtistForm = asyncHandler(async (req, res) => {
 exports.postArtistForm = [
   validateForm,
   asyncHandler(async (req, res) => {
+    // TEST FOR IMAGE UPLOAD, DON'T INSERT
     const artist = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -65,14 +66,18 @@ exports.postArtistForm = [
       return res.status(400).render("artistForm", {
         title: "New Artist / Group",
         artist: artist,
-        backLink: "/artists",
-        backText: "Back to Artists",
+        backLink: "/",
+        backText: "Back",
         errors: errors.array(),
       });
     }
 
     // TEST FOR IMAGE UPLOAD, DON'T INSERT
     console.log(req.body);
+    console.log(req.file);
+    console.log(res.locals);
+
+
     res.render("artistForm", {
       title: "New Artist / Group",
       backLink: "/",
