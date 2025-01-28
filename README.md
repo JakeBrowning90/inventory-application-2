@@ -14,6 +14,7 @@ I also ran into issues with implementing image upload. I ultimately used a combi
 Further down the line, I'd like to incorporate social media elements into the app by letting users save individual collections, and share those with friends.
 
 Additional challenges/to-dos:
+- Add a toggle to change the homepage to a text-list view.
 - Ordering middleware: at the moment, the image upload occurs ahead of form validation. I need to correct this so that the upload occurs only after validation, and still get the URL to be inserted the DB.
 - Deleting expired images: I have not yet implemented a way to remove an image for an entry when it is updated to be replaced by another. I'm sure this isn't too challenging, but I'll circle back to this.
 - Linking artists to one another: Late in development I realized it would be nice to give each artist a field for "associated acts" such as for collaborations, bands whose members have solo careers, etc.
